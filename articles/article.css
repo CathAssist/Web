@@ -1,0 +1,39 @@
+.article{
+	display: block;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+	font-size: 18px;
+	line-height: 20px;
+}
+.article h3{
+	display: block;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+	font-size: 20px;
+	float:left;
+	clear:left;
+}
+
+.article input{
+	margin-top:20px;
+	float:left;
+}
+
+.article select{
+	width:200px;
+	margin-top:20px;
+	float:left;
+}
+
+.title{
+	width:300px;
+}
+.author{
+	width:100px;
+}
+.src{
+	width:400px;
+}
+
+.btnSubmit{
+	width:20%;
+	clear:left;
+}

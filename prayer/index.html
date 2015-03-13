@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<title>天主教常用经文——天主教小助手</title>
+		<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<style type="text/css">
+		body{background-color:#e2e2e2;font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;}
+		h2{text-align:center;}
+		h3{text-align:center;}
+		
+		.group{
+			-moz-border-radius:8px;
+			-webkit-border-radius:8px;
+			border-radius:8px;
+			background-color:#FFFFFF;
+			padding:9px 0px 9px 0px;
+			text-decoration:none;
+			display:inline-block;
+			width:100%;
+			margin-top:10px;
+		}
+		
+		.URLObj{
+			font-size:14px;
+			border-bottom:1px solid #B5B5B5;
+			padding:0px;
+			text-decoration:none;
+			display:block;
+			width:100%;
+			margin-top:-1px;
+		}
+
+		div:last-child
+		{
+			border-bottom:0px;
+		}
+		
+		.css_btn_class {
+			font-size:16px;
+			font-weight:bold;
+			text-decoration:none;
+			color:#424242;
+			display:block;
+			padding:10px;
+		}
+		
+		.URLObj div{
+			margin-top:-10px;
+			padding:5px;
+		}
+		</style>
+		<script type="text/javascript">
+			function getTextInUrl(url)
+			{
+				var xmlhttp = new XMLHttpRequest();
+				xmlhttp.open("GET",url,false);
+				xmlhttp.send();
+				return xmlhttp.responseText;
+			}
+			
+			function gettext(e)
+			{
+				lastE = null;
+				var _t = e.target;
+				var _d = _t.parentNode;
+				if(_d == gettext.lastE)
+					return;
+					
+				var _url = window.location.href;
+				_url = _url.substr(0,_url.indexOf("index.html",0));
+				_url = _url+_d.id+".txt";
+				var newDiv = document.createElement("div");
+				newDiv.class="text";
+				newDiv.innerHTML = getTextInUrl(_url);
+				_d.appendChild(newDiv);
+				if(gettext.lastE!=null)
+				{
+					var text = gettext.lastE.lastChild;
+					gettext.lastE.removeChild(text);
+				}
+				gettext.lastE=_d;
+			}
+		</script>
+	</head>
+	<body>
+		<h2>天主教常用经文</h2>
+		<h3>常用经文</h3>
+		<div class="group">
+		<div class="URLObj" id="xiaoshenghao">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣号经（小圣号）</a>
+		</div>
+		<div class="URLObj" id="dashenghao">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣号经（大圣号）</a>
+		</div>
+		<div class="URLObj" id="dianshengshui">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">点圣水经</a>
+		</div>
+		<div class="URLObj" id="tianzhujing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">天主经</a>
+		</div>
+		<div class="URLObj" id="shengmujing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣母经</a>
+		</div>
+		<div class="URLObj" id="shengsanguangrongsong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣三光荣颂</a>
+		</div>
+		<div class="URLObj" id="xinjing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">信经</a>
+		</div>
+		<div class="URLObj" id="fanqianjing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">饭前经</a>
+		</div>
+		<div class="URLObj" id="fanhoujing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">饭后经</a>
+		</div>
+		<div class="URLObj" id="lingshengtiqiansong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">领圣体前诵</a>
+		</div>
+		<div class="URLObj" id="lingshengtihousong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">领圣体后诵</a>
+		</div>
+		<div class="URLObj" id="wubaili">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">五拜礼</a>
+		</div>
+		<div class="URLObj" id="wuxieli">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">五谢礼</a>
+		</div>
+		<div class="URLObj" id="sanzhongjing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">三钟经</a>
+		</div>
+		<div class="URLObj" id="xilejing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">喜乐经（复活期代替三钟经）</a>
+		</div>
+		</div>
+		<h3>玫瑰经</h3>
+		<div class="group">
+		<div class="URLObj" id="meiguijing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">玫瑰经念法</a>
+		</div>
+		<div class="URLObj" id="huanxi5duan">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">欢喜五端</a>
+		</div>
+		<div class="URLObj" id="tongku5duan">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">痛苦五端</a>
+		</div>
+		<div class="URLObj" id="rongfu5duan">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">荣福五端</a>
+		</div>
+		<div class="URLObj" id="guangming5duan">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">光明五端</a>
+		</div>
+		<div class="URLObj" id="muhouwanfusong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">母后万福颂</a>
+		</div>
+		</div>
+		<h3>苦路善工</h3>
+		<div class="group">
+		<div class="URLObj" id="cibeichuanjing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">慈悲串经</a>
+		</div>
+		<div class="URLObj" id="kulujing">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">苦路善工</a>
+		</div>
+		<div class="URLObj" id="shiwupianzhuwen">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">祝文十五篇</a>
+		</div>
+		</div>
+		<h3>常用祈祷文</h3>
+		<div class="group">
+		<div class="URLObj" id="weizaijiaoshiwangzhesong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">为在教适亡者诵</a>
+		</div>
+		<div class="URLObj" id="weizaijiaoyiwangfumuqinyouenrensong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">为在教已亡父母亲友恩人诵</a>
+		</div>
+		<div class="URLObj" id="weifanzhuxinzhelinghunsong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">为凡诸信者灵魂诵</a>
+		</div>
+		<div class="URLObj" id="fuqiushengshenjianglin_1">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">伏求圣神降临经（一）</a>
+		</div>
+		<div class="URLObj" id="fuqiushengshenjianglin_2">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">伏求圣神降临经（二）</a>
+		</div>
+		<div class="URLObj" id="qiuhushoutianshisong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">求护守天使诵</a>
+		</div>
+		<div class="URLObj" id="fengxianyushengxinsong">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">奉献全家于耶稣圣心颂</a>
+		</div>
+		<div class="URLObj" id="christmas9">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">耶酥圣诞节九日敬礼</a>
+		</div>
+		<div class="URLObj" id="chaobaishizijia">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">朝拜圣十字架祷文</a>
+		</div>
+		<div class="URLObj" id="shengmuwuranyuanzui">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣母无染原罪祷文</a>
+		</div>
+		<div class="URLObj" id="shengmushengxin">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣母圣心祷文</a>
+		</div>
+		<div class="URLObj" id="yesushengti">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">耶稣圣体祷文</a>
+		</div>
+		<div class="URLObj" id="shengruose">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">圣若瑟祷文</a>
+		</div>
+		<div class="URLObj" id="tianshi">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">天使祷文</a>
+		</div>
+		<div class="URLObj" id="yesushengming">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">耶稣圣名祷文</a>
+		</div>
+		<div class="URLObj" id="shengshen9">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">天主圣神九日敬礼</a>
+		</div>
+		<div class="URLObj" id="lianling">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">炼灵祷文</a>
+		</div>
+		<div class="URLObj" id="lianling9">
+			<a href="javascript:void(0)" class="css_btn_class" onclick="gettext(event)">为炼灵九日敬礼</a>
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
+	<script language="javascript" type="text/javascript">
+var imgUrl = 'http://www.cathassist.org/prayer/icon.png';
+var lineLink = 'http://www.cathassist.org/prayer/index.html';
+var descContent = "天主教常用经文——天主教小助手";
+var shareTitle = '天主教常用经文——天主教小助手';
+var appid = 'wxe95ac80cef656f14';
+
+function shareFriend() {
+    WeixinJSBridge.invoke('sendAppMessage',{
+                            "appid": appid,
+                            "img_url": imgUrl,
+                            "img_width": "640",
+                            "img_height": "640",
+                            "link": lineLink,
+                            "desc": descContent,
+                            "title": shareTitle
+                            }, function(res) {
+                            _report('send_msg', res.err_msg);
+                            })
+}
+function shareTimeline() {
+    WeixinJSBridge.invoke('shareTimeline',{
+                            "img_url": imgUrl,
+                            "img_width": "640",
+                            "img_height": "640",
+                            "link": lineLink,
+                            "desc": descContent,
+                            "title": shareTitle
+                            }, function(res) {
+                            _report('timeline', res.err_msg);
+                            });
+}
+function shareWeibo() {
+    WeixinJSBridge.invoke('shareWeibo',{
+                            "content": descContent,
+                            "url": lineLink,
+                            }, function(res) {
+                            _report('weibo', res.err_msg);
+                            });
+}
+// 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件。
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+
+        // 发送给好友
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+            shareFriend();
+            });
+
+        // 分享到朋友圈
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            shareTimeline();
+            });
+
+        // 分享到微博
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            shareWeibo();
+            });
+        }, false);
+	</script>
+</html>

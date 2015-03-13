@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>泰泽祈祷选用歌曲——天主教小助手</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<meta name="viewport" content="user-scalable=no, width=device-width" />
+<link rel="stylesheet" type="text/css" href="taize.css"/>
+<link rel="stylesheet" type="text/css" href="http://www.cathassist.org/js/jPlayer/skin/cd/cd.css"/>
+<script type="text/javascript" src="http://www.cathassist.org/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/snap.min.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    $(document).ready(function() {
+        var ppl = new jPlayerPlaylist({
+            jPlayer: "#jquery_jplayer_1",
+            cssSelectorAncestor: "#jp_container_1"
+        },  [{title:"上主袮当受赞美",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/01.mp3"},{title:"耶稣基督",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/02.mp3"},{title:"我们敬拜袮，主耶稣",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/06.mp3"},{title:"耶稣，请纪念我",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/13.mp3"},{title:"阿爸，托付我灵在袮手中",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/14.mp3"},{title:"我心灵平静安息在主内",artist:"上海教区",mp3:"http://media.cathassist.org/music/zones/taize/15.mp3"}], {
+        	playlistOptions: {
+				autoPlay: true,
+				enableRemoveControls: true
+			},
+			supplied: "mp3",
+			play: function(){
+				var current = ppl.playlist[ppl.current];
+
+				$('.title h2').text(current.title);
+				$('.author').text(current.artist);
+				$('.disc img').addClass('cycling').removeClass('paused')
+				$('.mag-head').removeClass('off-off')
+			},
+			pause: function(){
+				$('.disc img').addClass('paused')
+				$('.mag-head').addClass('off-off')
+			},
+			ended: function(){
+				$('.disc img').removeClass('paused cycling')
+			},
+            swfPath: "../js",
+            supplied: "oga, mp3",
+            wmode: "window",
+            smoothPlayBar: true,
+            keyEnabled: true
+        });
+
+        var snapper = new Snap({
+            element: $('.jp-interface')[0],
+            disable: 'left'
+        });
+        $('.open-right').click(function(){
+            snapper.open('right')
+        });
+		
+		SetWechatShare("泰泽祈祷选用歌曲","http://www.cathassist.org/taize/music.html","http://www.cathassist.org/taize/logo.jpg","泰泽祈祷选用歌曲（天主教小助手整理）");
+    });
+    //]]>
+</script>
+</head>
+<body>
+<center><h2>泰泽祈祷选用歌曲</h2></center>
+<div class="player">
+    <div id="jquery_jplayer_1" class="jp-jplayer"></div>
+    <div id="jp_container_1" class="jp-audio">
+        <div class="jp-type-playlist">
+            <div class="jp-gui jp-interface">
+                <a href="#" class="open-right"></a>
+                <div class="cp-buffer-holder">
+                    <!-- .cp-gt50 only needed when buffer is > than 50% -->
+                    <div class="cp-buffer-1"></div>
+                    <div class="cp-buffer-2"></div>
+                </div>
+                <div class="cp-progress-holder">
+                    <!-- .cp-gt50 only needed when progress is > than 50% -->
+                    <div class="cp-progress-1"></div>
+                    <div class="cp-progress-2"></div>
+                </div>
+                <div class="cp-circle-control"></div>
+                <div class="cover jp-type-single">
+                    <div class="disc">
+                        <img alt="" src="logo.jpg">
+                        <span class="opt need-active play jp-play"><i></i>播放</span>
+                        <span class="opt need-active play jp-pause"><i></i>暂停</span>
+                    </div>
+                    <div class="count-down">
+                        <span class="crescent"></span>
+                        <span class="remain jp-current-time"></span>
+                    </div>
+                    <!-- 磁头手柄 -->
+                    <div class="mag-head off-off"></div>
+                </div>
+                <div class="title">
+                    <h2></h2>
+                </div>
+                <div class="author"></div>
+                <div class="jp-progress">
+                    <div class="jp-seek-bar">
+                        <div class="jp-play-bar"></div>
+                    </div>
+                </div>
+                <div class="control">
+                    <div class="prev jp-previous"></div>
+                    <div class="next jp-next"></div>
+                </div>
+            </div>
+            <div class="jp-playlist snap-drawers">
+                <div class="snap-drawer snap-drawer-right">
+                    <ul>
+                        <li>泰泽祈祷选用歌曲</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="jp-no-solution">
+                <span>Update Required</span>
+                To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
+<br/>
+<center>
+<a href="http://mp.weixin.qq.com/mp/appmsg/show?__biz=MzA5MzAwNjcxMQ==&appmsgid=10000002&itemidx=1&sign=e5eb309ec3013bbc30d7d3b5d339d499#wechat_redirect" target="_blank">关注我们</a></center>
+</body>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/googleanalysis.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/common.js"></script>
+</html>

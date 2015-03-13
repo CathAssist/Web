@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /include/
+Disallow: /cgi-bin/
+Disallow: /users/
+Disallow: /*.js$
+
+Sitemap: http://www.cathassist.org/sitemap.php

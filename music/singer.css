@@ -1,0 +1,37 @@
+body{
+	background-color:#f0f0f0;
+	color:#999;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+}
+
+.singer{
+}
+
+.alume{
+	float:left;
+	margin-right:10px;
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	font-size: 16px;
+	line-height: 18px;
+	width:200px;
+	height:250px;
+}
+
+.alume span{
+	white-space:nowrap;             /* 设置一行显示 */
+	overflow:hidden;
+	text-overflow:ellipsis;
+	display: block;
+	color: rgb(48, 135, 253);
+	text-decoration:none;
+	font-size:18px;
+	line-height:20px;
+	float:top;
+}
+
+.alume img{
+	width:180px;
+	height:180px;
+}

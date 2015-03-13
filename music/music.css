@@ -1,0 +1,29 @@
+body{
+	background-color:#f0f0f0;
+	color:#999;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+}
+
+a{
+	color: rgb(48, 135, 253);
+	text-decoration:none;
+}
+
+.desc{
+	width: 100%;
+	text-align: center;
+	font-size: 18px;
+	line-height: 20px;
+	z-index:50;
+	margin-top: .5em;
+}
+
+.alume{
+	color: rgb(48, 135, 18);
+}
+
+a.download{
+	font-size: 16px;
+	line-height: 18px;
+	color: rgb(190, 135, 107);	
+}

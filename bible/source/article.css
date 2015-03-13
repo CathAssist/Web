@@ -1,0 +1,33 @@
+.body{
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+	font-size:16px;
+	line-height:18px;
+}
+.t1{
+	font-size:20px;
+	line-height:22px;
+	color:RGB(255,0,0);
+	font-weight:bold;
+}
+.t2{
+	font-size:18px;
+	line-height:20px;
+	color:RGB(180,0,0);
+	font-weight:bold;
+}
+.t3{
+	font-size:16px;
+	line-height:18px;
+	color:RGB(0,0,0);
+	font-weight:bold;
+}
+.c{
+	font-size:18px;
+	line-height:20px;
+	color:RGB(120,0,0);
+	font-weight:bold;
+}
+.s{
+	font-size:16px;
+	line-height:8px;
+}

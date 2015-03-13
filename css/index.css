@@ -1,0 +1,21 @@
+body{background-color:#e2e2e2;font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;}
+h2{text-align:center;}
+h3{text-align:center;}
+
+div:last-child
+{
+	border-bottom:0px;
+}
+
+a {
+	text-decoration:none;
+}
+
+.links{
+	padding-top:20px;
+	font-size:14px;
+}
+.links a{
+	margin-left:5px;
+	margin-right:5px;
+}

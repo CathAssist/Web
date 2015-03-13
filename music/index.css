@@ -1,0 +1,15 @@
+body{
+	background-color:#f0f0f0;
+	color:#999;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+}
+
+.singer{
+	float:left;
+	margin-right:10px;
+	margin-left:10px;
+	margin-top:10px;
+	margin-bottom:10px;
+	font-size: 16px;
+	line-height: 18px;
+}

@@ -1,0 +1,286 @@
+<html>
+<head>
+<title>梵蒂冈广播电台——天主教小助手</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<meta name="viewport" content="user-scalable=no, width=device-width" />
+<link rel="stylesheet" type="text/css" href="vaticanradiowebcast_cn.css"/>
+<link rel="stylesheet" type="text/css" href="/js/jPlayer/skin/pink.flag/jplayer.pink.flag.css"/>
+<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/js/jPlayer/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="/js/jPlayer/js/jplayer.playlist.min.js"></script>
+<script type="text/javascript">
+Date.prototype.Format = function (fmt) { //author: meizz 
+    var o = {
+        "M+": this.getMonth() + 1, //月份 
+        "d+": this.getDate(), //日 
+        "h+": this.getHours(), //小时 
+        "m+": this.getMinutes(), //分 
+        "s+": this.getSeconds(), //秒 
+        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+        "S": this.getMilliseconds() //毫秒 
+    };
+    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+    for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+    return fmt;
+}
+
+function initMedia()
+{
+	var dtNow = new Date();
+	var dtNow1 = new Date();dtNow1.setDate(dtNow1.getDate()-1);
+	var dtNow2 = new Date();dtNow2.setDate(dtNow2.getDate()-2);
+	var dtNow3 = new Date();dtNow3.setDate(dtNow3.getDate()-3);
+	//cn
+	var cnList = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_cn",
+		cssSelectorAncestor: "#jp_container_cn"
+	}, [
+	{
+		title:dtNow.Format("yyyy-MM-dd"),
+		artist:"梵蒂冈中文广播",
+		mp3:"http://media01.vatiradio.va/podcast/feed/cinese_"+dtNow.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow1.Format("yyyy-MM-dd"),
+		artist:"梵蒂冈中文广播",
+		mp3:"http://media01.vatiradio.va/podcast/feed/cinese_"+dtNow1.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow2.Format("yyyy-MM-dd"),
+		artist:"梵蒂冈中文广播",
+		mp3:"http://media01.vatiradio.va/podcast/feed/cinese_"+dtNow2.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow3.Format("yyyy-MM-dd"),
+		artist:"梵蒂冈中文广播",
+		mp3:"http://media01.vatiradio.va/podcast/feed/cinese_"+dtNow3.Format("ddMMyy")+".mp3"
+	}
+	],
+	{
+		playlistOptions:
+		{
+			autoPlay: true,
+			enableRemoveControls: true
+		},
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+	
+	//en
+	var enList = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_en",
+		cssSelectorAncestor: "#jp_container_en"
+	}, [
+	{
+		title:dtNow.Format("yyyy-MM-dd Evening"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_2_"+dtNow.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow.Format("yyyy-MM-dd Morning"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_1_"+dtNow.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow1.Format("yyyy-MM-dd Evening"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_2_"+dtNow1.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow1.Format("yyyy-MM-dd Morning"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_1_"+dtNow1.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow2.Format("yyyy-MM-dd Evening"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_2_"+dtNow2.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow2.Format("yyyy-MM-dd Morning"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_1_"+dtNow2.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow3.Format("yyyy-MM-dd Evening"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_2_"+dtNow3.Format("ddMMyy")+".mp3"
+	},
+	{
+		title:dtNow3.Format("yyyy-MM-dd Morning"),
+		artist:"Vaticanan Radio",
+		mp3:"http://media01.vatiradio.va/podcast/feed/rg_inglese_1_"+dtNow3.Format("ddMMyy")+".mp3"
+	}
+	], {
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+	
+	//mass
+	var enList = new jPlayerPlaylist({
+		jPlayer: "#jquery_jplayer_mass",
+		cssSelectorAncestor: "#jp_container_mass"
+	}, [
+	{
+		title:"主日弥撒",
+		artist:"梵蒂冈中文广播",
+		mp3:"http://media.vaticanradiowebcast.org/mp3_od/messa_cinese_1.mp3"
+	}
+	], {
+		supplied: "mp3",
+		wmode: "window",
+		smoothPlayBar: true,
+		keyEnabled: true
+	});
+}
+
+$(document).ready(function(){
+	initMedia();
+});
+</script>
+</head>
+<body>
+<center><h2>梵蒂冈广播电台</h2><h3>中文广播</h3></center>
+<div class="player">
+	<div id="jquery_jplayer_cn" class="jp-jplayer"></div>
+	<div id="jp_container_cn" class="jp-audio">
+		<div class="jp-type-playlist">
+			<div class="jp-gui jp-interface">
+				<ul class="jp-controls">
+					<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+					<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+					<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+					<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+					<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+					<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+				</ul>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+				<div class="jp-time-holder">
+					<div class="jp-current-time"></div>
+					<div class="jp-duration"></div>
+				</div>
+				<ul class="jp-toggles">
+					<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+					<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+					<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+					<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+				</ul>
+			</div>
+			<div class="jp-playlist">
+				<ul>
+					<li>梵蒂冈中文广播</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</br>
+<center><h3>English News</h3></center>
+<div class="player">
+	<div id="jquery_jplayer_en" class="jp-jplayer"></div>
+	<div id="jp_container_en" class="jp-audio">
+		<div class="jp-type-playlist">
+			<div class="jp-gui jp-interface">
+				<ul class="jp-controls">
+					<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+					<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+					<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+					<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+					<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+					<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+				</ul>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+				<div class="jp-time-holder">
+					<div class="jp-current-time"></div>
+					<div class="jp-duration"></div>
+				</div>
+				<ul class="jp-toggles">
+					<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+					<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+					<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+					<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+				</ul>
+			</div>
+			<div class="jp-playlist">
+				<ul>
+					<li>English News</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</br>
+<center><h3>主日弥撒</h3></center>
+<div class="player">
+	<div id="jquery_jplayer_mass" class="jp-jplayer"></div>
+	<div id="jp_container_mass" class="jp-audio">
+		<div class="jp-type-playlist">
+			<div class="jp-gui jp-interface">
+				<ul class="jp-controls">
+					<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+					<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+					<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+					<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+					<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+					<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+					<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+				</ul>
+				<div class="jp-progress">
+					<div class="jp-seek-bar">
+						<div class="jp-play-bar"></div>
+					</div>
+				</div>
+				<div class="jp-volume-bar">
+					<div class="jp-volume-bar-value"></div>
+				</div>
+				<div class="jp-time-holder">
+					<div class="jp-current-time"></div>
+					<div class="jp-duration"></div>
+				</div>
+				<ul class="jp-toggles">
+					<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+					<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+					<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+					<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+				</ul>
+			</div>
+			<div class="jp-playlist">
+				<ul>
+					<li>主日弥撒</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</br>
+<center>提示：播放音频会损耗较多流量</center>
+</body>
+<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>
+<script language="javascript" type="text/javascript">var contentModel={
+	"img_url": "http://www.cathassist.org/media/icon.jpg", "img_width": "","img_height": "","link": "http://www.cathassist.org/media/vaticanradiowebcast_cn.php", "desc": "梵蒂冈广播电台", 
+    "title": "梵蒂冈广播电台", "src": "天主教小助手" };</script><script language="JavaScript" src="http://mat1.gtimg.com/www/js/newsapp/wechat/wechat20130809_min.js" type="text/javascript" charset="utf-8"></script>
+</html>

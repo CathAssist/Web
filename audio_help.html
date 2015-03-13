@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>推荐给朋友</title>
+<meta http-equiv=Content-Type content="text/html;charset=utf-8">
+<meta name="viewport" content="user-scalable=no, width=device-width" /> 
+<script type="text/javascript">
+function audioerror(){
+	var mydiv = document.getElementById("mydiv");
+	var myaudio = document.getElementById("audio");
+	var mysrc = myaudio.src.replace("p.mp3",".mp3");
+	if(isNaN(myaudio.currentTime) || myaudio.currentTime<10)
+	{
+		mydiv.removeChild(myaudio);
+		myaudio = document.createElement("audio");
+		myaudio.src = mysrc;myaudio.controls = true;
+		myaudio.preload = "auto";
+		mydiv.appendChild(myaudio);
+		myaudio.play();
+	}
+}
+</script>
+</head>
+<body style="text-align:center;">
+<div align="center" id="mydiv">
+	<audio id="audio" src="http://apps.thomasluk.idv.hk/apps/themes/read_bible/20130516p.mp3" controls preload="none" onerror="audioerror()" onended="audioerror()"></audio>
+</div>
+</br>
+<pre align="center">提示：播放音频会损耗较多流量</pre>
+</body>
+</html>
+
+
+<!--
+http://apps.thomasluk.idv.hk/apps/themes/read_bible/20130513p.mp3
+http://media.thomasluk.idv.hk/android/media/ReadBible/mp3/20130513p.mp3
+
+http://apps.thomasluk.idv.hk/apps/calendar/VlRGYVRrMVdiM2hpUldoU1ZsaFNZVlZXWXpSUFVUMDk=/VlhwQ1QwNUdTa2RpUldSVFYwVTFWMVJYZEV0V01WSkdWV3MxVGxKdGVFTlpNR1JyVWtad05rMUVhejA9
+http://apps.thomasluk.idv.hk/apps/calendar/VlRGYVRtVkdSbGRpUldoU1ZsaFNZVlZXWXpSUFVUMDk=/VlhwQ1QwNUdTa2RpUldSVFYwVTFWMVJYZEV0V01WSkdWV3MxVGxKdGVFTlpNR1JyVWtad05rMUVhejA9
+
+VlhwQ1QwNUdTa2RpUldSVFYwVTFWMVJYZEV0V01WSkdWV3M1VWxadGVFTlpNR1JyVWtad05rMUVhejA9
+VlhwQ1QwNUdTa2RpUldSVFYwVTFWMVJYZEV0V01WSkdWV3MxVGxKdGVFTlpNR1JyVWtad05rMUVhejA9
+
+
+\x28 \x2c \x43 \x60 \x51 \x2c \x53 \x60 
+\x55 \x2c \x33 \x40 \x60 \x0a \x60 \x0a 
+
+\x28 \x2c \x43 \x60 \x51 \x2c \x53 \x60 
+\x55 \x2c \x33 \x34 \x60 \x0a \x60 \x0a 
+
+
+2013-04-12
+\x28 \x2c \x43 \x60 \x51 \x2c \x53 \x60 
+\x54 \x2c \x33 \x28 \x60 \x0a \x60 \x0a 
+-->

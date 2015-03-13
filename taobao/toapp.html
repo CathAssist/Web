@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>打开淘宝客户端</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+</head>
+	<script>
+  window.onload = function(){
+     var href = "http://taobao.cathassist.org/";
+     var ua = window.navigator.userAgent;
+     if(ua.match(/Android/i) != null){
+        href="taobao://shop.m.taobao.com/shop/shop_index.htm?shop_id=114244839";
+    }
+    if(ua.match(/iPad|iPhone|iPod/i) != null){
+        href="taobao://shop.m.taobao.com/shop/shop_index.htm?shop_id=114244839";
+    }
+	
+	window.location.replace(href);
+  }
+</script>
+<body>
+</body>
+</html>

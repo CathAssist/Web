@@ -1,0 +1,92 @@
+{
+	"button" : [
+	{
+		"name" : "教会动态",
+		"sub_button" : [
+		{
+			"type" : "click",
+			"name" : "普世教会",
+			"url" : "http://www.cathassist.org/vaticanacn/",
+			"key" : "101"
+		},
+		{
+			"type" : "click",
+			"name" : "信仰生活",
+			"url" : "http://www.cathassist.org/faithlife/",
+			"key" : "103"
+		},
+		{
+			"type" : "view",
+			"name" : "彼此代祷",
+			"url" : "http://www.cathassist.org/pray/index.php"
+		},
+		{
+			"type" : "view",
+			"name" : "互动社区",
+			"url" : "http://wx.wsq.qq.com/232967608"
+		},
+		{
+			"type" : "view",
+			"name" : "淘宝精品",
+			"url" : "http://taobao.cathassist.org/"
+		}]
+	},
+	{
+		"name" : "每日灵修",
+		"sub_button" : [
+		{
+			"type" : "click",
+			"name" : "日课及读经",
+			"key" : "201"
+		},
+		{
+			"type" : "view",
+			"name" : "梵蒂冈广播",
+			"url" : "http://www.cathassist.org/media/vaticanradio.html"
+		},
+		{
+			"type" : "view",
+			"name" : "色辣芬电台",
+			"url" : "http://www.cathassist.org/music/music.php"
+		},
+		{
+			"type" : "view",
+			"name" : "晨星生命之音",
+			"url" : "http://www.cathassist.org/radio/index.php?channel=cx&from=wxmenu"
+		},
+		{
+			"type" : "view",
+			"name" : "福音i广播",
+			"url" : "http://www.cathassist.org/radio/index.php?channel=ai&from=wxmenu"
+		}]
+	},
+	{
+		"name" : "小助手",
+		"sub_button" : [
+		{
+			"type" : "view",
+			"name" : "思高圣经",
+			"url" : "http://www.cathassist.org/bible/bible/index.html"
+		},
+		{
+			"type" : "view",
+			"name" : "常用经文",
+			"url" : "http://www.cathassist.org/prayer/index.html"
+		},
+		{
+			"type" : "click",
+			"name" : "圣经金句",
+			"key" : "303"
+		},
+		{
+			"type" : "view",
+			"name" : "应用下载",
+			"url" : "http://www.cathassist.org/app.html"
+		},
+		{
+			"type" : "view",
+			"name" : "更多……",
+			"url" : "http://www.cathassist.org/3rd/more.html"
+		}]
+	}]
+}

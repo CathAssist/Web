@@ -1,0 +1,67 @@
+body{
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+}
+.topic{
+	color: rgb(232, 82, 152);
+	display: block;
+	font-size: 18px;
+	line-height: 20px;
+}
+.current{
+}
+.current a{
+	color: rgb(232, 82, 152);
+	text-decoration:none;
+	font-size: 18px;
+	line-height: 20px;
+}
+.topic-title{
+	color: rgb(0, 91, 172);
+	font-size:25px;
+	line-height:30px;
+}
+
+.content{
+	color:rgb(137,137,137);
+	text-decoration:none;
+	font-size:18px;
+	line-height: 20px;
+}
+.content img{
+	width:99%;
+	margin-left: 0%;
+	margin-right: 1%;
+	margin-bottom: 20px;
+	margin: 0 auto;
+	display: block;
+	max-width: 500px;
+}
+
+a.src{
+	color: rgb(48, 135, 253);
+	text-decoration:none;
+	font-size:18px;
+	line-height: 25px;
+}
+
+.content a{
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+	font-size:18px;
+	line-height: 35px;
+}
+
+.pages a{
+	color:#999;
+	font-size:15px;
+	line-height: 25px;	
+}
+
+audio{
+	width:100%
+}
+
+body{
+	max-width:700px;
+	margin:5px auto;
+	border:solid 5px transparent;
+}

@@ -1,0 +1,12 @@
+body{
+	background-color:#f0f0f0;
+	color:#999;
+	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
+}
+.player{
+margin:0 auto;
+width:243px;
+}
+audio{
+	width:100%
+}
