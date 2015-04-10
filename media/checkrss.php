@@ -45,7 +45,7 @@
 	$cndaystr = "";
 	
 	{
-		$cndaystr = getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=cinese",$cnday,3600*14);
+		$cndaystr = getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=cinese",$cnday,3600*4);
 		$cndaytitle = '中文广播('.$cndaystr.')';
 		$enmtitle = 'English News('.getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=rg_inglese_1",$enmorning).' morning)';
 		$enetitle = 'English News('.getAudio("http://media01.vatiradio.va/podmaker/podcaster.aspx?c=rg_inglese_2",$enevening).' evening)';
