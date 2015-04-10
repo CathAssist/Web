@@ -3,7 +3,7 @@
 		<title>天主教小助手</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<meta name="viewport" content="user-scalable=no, width=device-width" />
-		<meta http-equiv="keywords" content="天主教小助手、天主教微信、天主教、微信、微信公众号、服务号"/>
+		<meta http-equiv="keywords" content="天主教小助手、天主教微信、天主教、微信、微信公众号、服务号、天主教中文网"/>
 		<meta http-equiv="description" content="为大家提供微信公众服务号服务；各种信仰生活中的App（天主教小助手、圣经小助手、电台小助手、圣乐小助手等）；提供每日日课及读经、圣人传记、梵蒂冈广播、信仰分享、思高圣经、天主教教理等内容"/>
 		<link href="/css/index.css" type="text/css" rel="stylesheet">
 	</head>
@@ -56,7 +56,8 @@
 			<h2><a href="/faithlife/index.php" alt="信仰生活（来源信德网）">信仰生活（来源信德网）</a></h2>
 			<h2><a href="/articles/index.php" alt="主内分享">主内分享（小助手推荐）</a></h2>
 			<h2><a href="/music/music.php" alt="教会歌曲">随机听歌（放松一下）</a></h2>
-			<h2><a href="/radio/?channel=cx" alt="晨星生命之音">晨星生命之音（电台广播）</a></h2>
+			<h2><a href="/radio/?channel=cx" alt="晨星生命之音">晨星生命之音</a></h2>
+			<h2><a href="/radio/?channel=ai" alt="福音i广播">福音i广播</a></h2>
 			<h2><a href="/3rd/more.html" alt="更多小工具">更多小工具</a></h2>
 			</br></br>
 			<h1><a href="app.html">应用下载</a></h1>

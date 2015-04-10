@@ -2,6 +2,9 @@ body{
 	background-color:#e2e2e2;
 	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size:18px;
+	max-width: 700px;
+	margin: 5px auto;
+	border: solid 5px transparent;
 }
 
 audio{
