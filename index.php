@@ -71,6 +71,12 @@
 			<div><img src="/wechat/pics/qrcode.jpg" alt="天主教小助手微信公众名片"></img></div>
 			<h2>也可以加入我们的QQ用户群:346634605&nbsp;&nbsp;<a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=efeb46ab5ae17b7d03d3953af02ac0c578eac704c3ade191dbf9de05d34b8747"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="天主教小助手" title="天主教小助手"></a></h2>
 			<div class="links">常用链接：<a href="http://zh.radiovaticana.va/" target="_blank">梵蒂冈广播电台</a><a href="http://www.chinacatholic.org/" target="_blank">信德网</a><a href="http://www.chinacath.org/" target="_blank">天主教在线</a><a href="http://blog.sina.com.cn/along999" target="_blank">光与爱之家（博客）</a><a href="http://www.tianzhujiao.org/" target="_blank">长青家园</a><a href="http://www.xiaodelan.com/" target="_blank">小德兰爱心书屋</a></div>
+			<div class="links">教堂教区：
+				<a href="http://www.catholicsh.org/index.aspx" target="_blank">上海教区</a>
+				<a href="http://www.catholic-bj.org/" target="_blank">北京教区</a>
+				<a href="http://www.tycatholic.cn/" target="_blank">太原教区</a>
+				<a href="http://www.tzjwzjq.com/" target="_blank">温州教区</a>
+			</div>
 		</center>
 	</body>
 	<script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script>

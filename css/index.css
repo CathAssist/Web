@@ -12,8 +12,9 @@ a {
 }
 
 .links{
-	padding-top:20px;
+	padding-top:10px;
 	font-size:14px;
+	max-width:500px;
 }
 .links a{
 	margin-left:5px;
