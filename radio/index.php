@@ -64,6 +64,9 @@
 			curDate = new Date(data['date']);
 			$("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
 			document.title = data['title'];
+
+			var state = "index.php?channel="+channel+"&date="+curDate.Format("yyyy-MM-dd");
+			window.history.pushState([],0,state);
 			
 			SetWechatShare(data['title'],window.location.href,data['logo'],data['title']);
 		});
