@@ -44,8 +44,17 @@
 		if (r != null) return unescape(r[2]); return null;
     }
 	
+	function updateHref()
+	{
+		var state = "index.php?channel="+channel+"&date="+curDate.Format("yyyy-MM-dd");
+		var loc = "http://www.cathassist.org/radio/"+state;
+		window.location.href = loc;
+//		window.history.pushState([],0,state);
+	}
+
 	function getRadio(_d)
 	{
+		console.log("getradio...");
 		ppl.pause();
 		$.get("getradio.php?channel="+channel+"&date="+_d.Format("yyyy-MM-dd"), function(data)
 		{
@@ -65,9 +74,6 @@
 			$("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
 			document.title = data['title'];
 
-			var state = "index.php?channel="+channel+"&date="+curDate.Format("yyyy-MM-dd");
-			window.history.pushState([],0,state);
-			
 			SetWechatShare(data['title'],window.location.href,data['logo'],data['title']);
 		});
 	}
@@ -84,6 +90,7 @@
 			},
 			supplied: "mp3",
 			play: function(){
+				console.log("jplayer play...");
 				var current = ppl.playlist[ppl.current];
 
 				$('.title h2').text(current.title);
@@ -117,6 +124,7 @@
 		{
 			channel = $("#jpchannel").val();
 			getRadio(curDate);
+			updateHref();
 		});
 		
 		//prev day
@@ -124,12 +132,14 @@
 		{
 			curDate.setDate(curDate.getDate()-1);
 			getRadio(curDate);
+			updateHref();
 		});
 		//next day
 		$("#nextBtn").click(function()
 		{
 			curDate.setDate(curDate.getDate()+1);
 			getRadio(curDate);
+			updateHref();
 		});
 		
 		//set date;
@@ -137,6 +147,7 @@
 		{
 			curDate = new Date($("#dateBtn").val());
 			getRadio(curDate);
+			updateHref();
 		});
 		
 		var argC = getQueryString("channel");
