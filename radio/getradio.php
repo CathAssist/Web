@@ -70,6 +70,10 @@
 			{
 				return new GosChannel();
 			}
+			else if($c=="smzy")
+			{
+				return new SmzyChannel();
+			}
 			else
 			{
 				return new BaseChannel();
@@ -99,7 +103,7 @@
 			if(!file_exists($cxfile) or $refresh)
 			{
 				$cxdate = gmdate("Y-n-j", $date);
-				$cxradio = 'http://211.149.237.175/playlist/'.$cxdate.'.txt';
+				$cxradio = 'http://211.149.237.175//playlist/'.$cxdate.'.txt';
 				$cxlist = explode("\n",file_get_contents($cxradio));		//或是url list
 				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
 				$cxjson["title"] = "晨星生命之音";
@@ -149,7 +153,6 @@
 			{
 				$airadio = 'http://media.cathassist.org/radio/upload/data/airadio/'.$strDate.'/'.$strDate.'.txt';
 				$aicontent = file_get_contents($airadio);		//或是url list
-				$cnpreg = "/[\x{4e00}-\x{9fa5}]+/u";
 				$aijson["title"] = "福音i广播";
 				$aijson["date"] = $strDate;
 				$aijson["logo"] = "http://www.cathassist.org/radio/logos/ai.png";
@@ -176,6 +179,52 @@
 		}
 	}
 	
+	//生命之言
+	class SmzyChannel extends BaseChannel
+	{
+		function getRadio($date)
+		{
+			global $refresh;
+
+			if($date<mktime(8, 0, 0, 7, 24, 2014))
+			{
+				$date = mktime(8, 0, 0, 7, 24, 2014);
+			}
+			$strDate = gmdate('Y-m-d',$date);
+			$ccfile = './smzy/'.$strDate;
+			$ccjson = null;
+
+			if((!file_exists($ccfile)) or $refresh)
+			{
+				$ccradio = 'http://media.cathassist.org/radio/smzy/data/'.$strDate.'.txt';
+				$cccontent = file_get_contents($ccradio);		//或是url list
+				$ccjson["title"] = "生命之言";
+				$ccjson["date"] = $strDate;
+				$ccjson["logo"] = "http://www.cathassist.org/radio/logos/smzy.png";
+				$ccjson["desc"] = "听神父分享圣经";
+				$i = 0;
+				$items = json_decode($cccontent,true);
+				foreach($items as $item)
+				{
+					$ccjson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
+					$i++;
+				}
+				if($i<1)
+				{
+					return null;
+				}
+				file_put_contents($ccfile,json_encode($ccjson));
+//				BaseChannel::append2All("smzy",$ccjson);
+			}
+			else
+			{
+				$ccjson = json_decode(file_get_contents($ccfile),true);
+			}
+			return $ccjson;
+		}
+	}
+
+
 	//梵蒂冈中文广播
 	class VacnChannel extends BaseChannel
 	{
