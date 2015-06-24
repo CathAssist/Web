@@ -1,16 +1,9 @@
-<?php
-	if(isset($_GET['channel']) == false)
-	{
-		header("Location: http://www.cathassist.org/radio/index.php?channel=vacn");
-		exit;
-	}
-?>
 <html>
 <head>
-	<title>电台小助手</title>
+	<title>天主教小助手网络电台</title>
 	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, minimal-ui" />
-	<link rel="stylesheet" type="text/css" href="http://www.cathassist.org/js/jPlayer/skin/cd/cd.css"/>
+	<link rel="stylesheet" type="text/css" href="http://cathassist.org/js/jPlayer/skin/cd/cd.css"/>
 	<style type="text/css">
 		.title-bar select{
 			padding: 5px;
@@ -20,26 +13,13 @@
 			border: 0 none;
 			background: transparent;
 		}
-		
-		button{
-			background: transparent;
-			border: 0 none;
-			-webkit-appearance: none;
-			text-align: center;
-			color: #007AFF;
-			font-size: 16px;
-		}
-		
-		footer{
-			margin-top: 20px;
-		}
 	</style>
-	<script type="text/javascript" src="http://www.cathassist.org/js/jquery-1.9.1.min.js"></script>
-	<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
-	<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
-	<script src="http://www.cathassist.org/js/snap.min.js"></script>
-	<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/googleanalysis.js"></script>
-	<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/common.js"></script>
+	<script type="text/javascript" src="http://cathassist.org/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
+	<script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
+	<script src="http://cathassist.org/js/snap.min.js"></script>
+	<script type="text/javascript" language="javascript" src="http://cathassist.org/include/googleanalysis.js"></script>
+	<script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script>
     <script>
     //<![CDATA[
 	Date.prototype.Format = function (fmt) { //author: meizz 
@@ -71,20 +51,39 @@
 		window.location.href = loc;
 //		window.history.pushState([],0,state);
 	}
+
+	function getRadio(_d)
+	{
+		console.log("getradio...");
+		ppl.pause();
+		$.get("getradio.php?channel="+channel+"&date="+_d.Format("yyyy-MM-dd"), function(data)
+		{
+			data = jQuery.parseJSON(data);
+			var list = new Object();
+			$.each( data['items'], function( key, val )
+			{
+				list[key] = new Object();
+				list[key]['title'] = val['title'];
+				list[key]['mp3'] = val['src'];
+			});
+			
+			ppl.setPlaylist(list);
+			$("#jptitle").html(data['title']);
+			$("#jpimg").attr("src",data["logo"]);
+			curDate = new Date(data['date']);
+			$("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
+			document.title = data['title'];
+
+			SetWechatShare(data['title'],window.location.href,data['logo'],data['title']);
+		});
+	}
 	
     $(document).ready(function()
 	{
-		$('#aboutus').click(function(){
-			window.open("http://www.cathassist.org/",'_blank');
-		});
-		$('#aboutchannel').click(function(){
-			window.open("http://www.cathassist.org/radio/about.php?channel="+channel,'_blank');
-		});
-		
 		ppl = new jPlayerPlaylist({
 			jPlayer: "#jquery_jplayer_1",
 			cssSelectorAncestor: "#jp_container_1"
-		},playLists, {
+		},[], {
 			playlistOptions: {
 				autoPlay: true,
 				enableRemoveControls: true
@@ -106,7 +105,7 @@
 			ended: function(){
 				$('.disc img').removeClass('paused cycling')
 			},
-			swfPath: "http://www.cathassist.org/js/jPlayer/js",
+			swfPath: "http://cathassist.org/js/jPlayer/js",
 			supplied: "oga, mp3",
 			wmode: "window",
 			smoothPlayBar: true,
@@ -124,6 +123,7 @@
 		$("#jpchannel").change(function()
 		{
 			channel = $("#jpchannel").val();
+			getRadio(curDate);
 			updateHref();
 		});
 		
@@ -131,12 +131,14 @@
 		$("#prevBtn").click(function()
 		{
 			curDate.setDate(curDate.getDate()-1);
+			getRadio(curDate);
 			updateHref();
 		});
 		//next day
 		$("#nextBtn").click(function()
 		{
 			curDate.setDate(curDate.getDate()+1);
+			getRadio(curDate);
 			updateHref();
 		});
 		
@@ -144,43 +146,26 @@
 		$("#dateBtn").blur(function(event)
 		{
 			curDate = new Date($("#dateBtn").val());
+			getRadio(curDate);
 			updateHref();
 		});
 		
 		var argC = getQueryString("channel");
+
+		var argD = getQueryString("date");
+		if(argD != null && argD != "")
+		{
+			curDate = new Date(argD);
+		}
 		
 		$("#jpchannel").val(argC);
 		channel = $("#jpchannel").val();
-		
-		$("#jptitle").html(playTitle);
-		$("#jpimg").attr("src",playLogo);
-		$("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
-		document.title = playTitle;
-		
-		SetWechatShare(playTitle,window.location.href,playLogo,playTitle);
+		getRadio(curDate);
     });
 	
 	var ppl = null;
 	var curDate = new Date();
-	var channel = "vacn";
-<?php
-	$url = "http://www.cathassist.org/radio/getradio.php?";
-	foreach ( $_GET as $key => $value )
-	{
-		$url = $url.$key.'='.$value.'&';
-	}
-	$arr = json_decode(file_get_contents($url));
-	echo('playLists = [');
-	foreach($arr->items as $item)
-	{
-		echo('{title:"'.$item->title.'",mp3:"'.$item->src.'"},');
-	}
-	echo('];'."\n");
-	
-	echo('playTitle="'.$arr->title.'";'."\n");
-	echo('playLogo="'.$arr->logo.'";'."\n");
-	echo('curDate = new Date("'.$arr->date.'");'."\n");
-?>
+	var channel = "cx";
     //]]>
     </script>
 </head>
@@ -194,13 +179,12 @@
                     <a href="#" class="open-right"></a>
                     <span class="wrap">
                         <select id="jpchannel">
-                            <option value="vacn">梵蒂冈广播</option>
-                            <option value="ai">福音i广播</option>
                             <option value="cx">晨星生命之音</option>
+                            <option value="ai">福音i广播</option>
+                            <option value="vacn">梵蒂冈广播</option>
                             <option value="gos">每日福音</option>
-                            <option value="smzy">生命之言</option>
                         </select>
-                        <b id="jptitle">梵蒂冈广播</b>
+                        <b id="jptitle">晨星生命之音</b>
                     </span>
 					<!--<h2 id="jptitle">天主教小助手网络电台</h2>-->
                 </div>
@@ -245,10 +229,6 @@
                     <input id="dateBtn" type="date" value="2014/03/08" autocomplete="off"/>
                     <button id="nextBtn">下一天</button>
                 </div>
-				<button id="aboutchannel">关于本电台</button>
-				<footer>
-					<small>电台小助手(Powered by <a id="aboutus" href="http://www.cathassist.org" target="_blank">天主教小助手</a>)</small>
-				</footer>
             </div>
             <div class="jp-playlist snap-drawers">
                 <div class="snap-drawer snap-drawer-right">
