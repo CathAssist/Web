@@ -30,9 +30,6 @@
 			font-size: 16px;
 		}
 		
-		footer{
-			margin-top: 20px;
-		}
 	</style>
 	<script type="text/javascript" src="http://www.cathassist.org/js/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
@@ -157,7 +154,7 @@
 		$("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
 		document.title = playTitle;
 		
-		SetWechatShare(playTitle,window.location.href,playLogo,playTitle);
+		SetWechatShare(playTitle+"("+playDesc+")",window.location.href,playLogo,playDesc);
     });
 	
 	var ppl = null;
@@ -179,6 +176,7 @@
 	
 	echo('playTitle="'.$arr->title.'";'."\n");
 	echo('playLogo="'.$arr->logo.'";'."\n");
+	echo('playDesc="'.$arr->desc.'";'."\n");
 	echo('curDate = new Date("'.$arr->date.'");'."\n");
 ?>
     //]]>
@@ -245,9 +243,8 @@
                     <input id="dateBtn" type="date" value="2014/03/08" autocomplete="off"/>
                     <button id="nextBtn">下一天</button>
                 </div>
-				<button id="aboutchannel">关于本电台</button>
 				<footer>
-					<small>电台小助手(Powered by <a id="aboutus" href="http://www.cathassist.org" target="_blank">天主教小助手</a>)</small>
+					<small><a id="aboutchannel" href="#" target="_blank">关于本电台</a>(Powered by <a id="aboutus" href="http://www.cathassist.org" target="_blank">天主教小助手</a>)</small>
 				</footer>
             </div>
             <div class="jp-playlist snap-drawers">

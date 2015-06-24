@@ -174,6 +174,7 @@
 			else
 			{
 				$aijson = json_decode(file_get_contents($aifile),true);
+				$aijson["desc"] = "来自8090的声音";
 			}
 			return $aijson;
 		}
