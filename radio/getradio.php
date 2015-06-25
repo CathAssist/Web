@@ -74,6 +74,14 @@
 			{
 				return new SmzyChannel();
 			}
+			else if($c=="hyqd")
+			{
+				return new HyqdChannel();
+			}
+			else if($c=="cztzd")
+			{
+				return new CztzdChannel();
+			}
 			else
 			{
 				return new BaseChannel();
@@ -88,6 +96,119 @@
 			$all["gos"]["desc"] = "一起聆听主的教诲";
 
 			return $all;
+		}
+	}
+	
+	//从唱吧获取的电台基类
+	class CCChannel extends BaseChannel
+	{
+		public function getInfo()
+		{
+			$ret = array();
+			$ret['key'] = 'smzy';
+			$ret['title'] = '生命之言';
+			$ret['logo'] = 'http://www.cathassist.org/radio/logos/smzy.png';
+			$ret['desc'] = '听神父分享圣经';
+			return $ret;
+		}
+		public function getBeginDate()
+		{
+			return mktime(8, 0, 0, 7, 24, 2014);
+		}
+	
+		public function getRadio($date)
+		{
+			global $refresh;
+			$cInfo = $this->getInfo();
+			
+			$ukey = $cInfo['key'];
+			$dtBegin = $this->getBeginDate();
+			
+			if($date<$dtBegin)
+			{
+				$date = $dtBegin;
+			}
+			$strDate = gmdate('Y-m-d',$date);
+			$ccfile = './'.$ukey.'/'.$strDate;
+			$ccjson = null;
+			if((!file_exists($ccfile)) or $refresh)
+			{
+				$ccradio = 'http://media.cathassist.org/radio/'.$ukey.'/data/'.$strDate.'.txt';
+				$cccontent = file_get_contents($ccradio);		//或是url list
+				$ccjson["title"] = $cInfo['title'];
+				$ccjson["date"] = $strDate;
+				$ccjson["logo"] = $cInfo['logo'];
+				$ccjson["desc"] = $cInfo['desc'];
+				$i = 0;
+				$items = json_decode($cccontent,true);
+				foreach($items as $item)
+				{
+					$ccjson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
+					$i++;
+				}
+				if($i<1)
+				{
+					return null;
+				}
+				file_put_contents($ccfile,json_encode($ccjson));
+//				BaseChannel::append2All($ukey,$ccjson);
+			}
+			else
+			{
+				$ccjson = json_decode(file_get_contents($ccfile),true);
+			}
+			return $ccjson;
+		}
+	}
+	class SmzyChannel extends CCChannel
+	{
+		public function getInfo()
+		{
+			$ret = array();
+			$ret['key'] = 'smzy';
+			$ret['title'] = '生命之言';
+			$ret['logo'] = 'http://www.cathassist.org/radio/logos/smzy.png';
+			$ret['desc'] = '听神父分享"生命之言"';
+			return $ret;
+		}
+		
+		public function getBeginDate()
+		{
+			return mktime(8, 0, 0, 7, 24, 2014);
+		}
+	}
+	class HyqdChannel extends CCChannel
+	{
+		public function getInfo()
+		{
+			$ret = array();
+			$ret['key'] = 'hyqd';
+			$ret['title'] = '合一祈祷';
+			$ret['logo'] = 'http://www.cathassist.org/radio/logos/hyqd.jpg';
+			$ret['desc'] = '';
+			return $ret;
+		}
+		
+		public function getBeginDate()
+		{
+			return mktime(8, 0, 0, 5, 2, 2014);
+		}
+	}
+	class CztzdChannel extends CCChannel
+	{
+		public function getInfo()
+		{
+			$ret = array();
+			$ret['key'] = 'cztzd';
+			$ret['title'] = '诚者天之道';
+			$ret['logo'] = 'http://www.cathassist.org/radio/logos/cztzd.jpg';
+			$ret['desc'] = '';
+			return $ret;
+		}
+		
+		public function getBeginDate()
+		{
+			return mktime(8, 0, 0, 3, 27, 2014);
 		}
 	}
 	
@@ -177,51 +298,6 @@
 				$aijson["desc"] = "来自8090的声音";
 			}
 			return $aijson;
-		}
-	}
-	
-	//生命之言
-	class SmzyChannel extends BaseChannel
-	{
-		function getRadio($date)
-		{
-			global $refresh;
-
-			if($date<mktime(8, 0, 0, 7, 24, 2014))
-			{
-				$date = mktime(8, 0, 0, 7, 24, 2014);
-			}
-			$strDate = gmdate('Y-m-d',$date);
-			$ccfile = './smzy/'.$strDate;
-			$ccjson = null;
-
-			if((!file_exists($ccfile)) or $refresh)
-			{
-				$ccradio = 'http://media.cathassist.org/radio/smzy/data/'.$strDate.'.txt';
-				$cccontent = file_get_contents($ccradio);		//或是url list
-				$ccjson["title"] = "生命之言";
-				$ccjson["date"] = $strDate;
-				$ccjson["logo"] = "http://www.cathassist.org/radio/logos/smzy.png";
-				$ccjson["desc"] = "听神父分享圣经";
-				$i = 0;
-				$items = json_decode($cccontent,true);
-				foreach($items as $item)
-				{
-					$ccjson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
-					$i++;
-				}
-				if($i<1)
-				{
-					return null;
-				}
-				file_put_contents($ccfile,json_encode($ccjson));
-//				BaseChannel::append2All("smzy",$ccjson);
-			}
-			else
-			{
-				$ccjson = json_decode(file_get_contents($ccfile),true);
-			}
-			return $ccjson;
 		}
 	}
 
