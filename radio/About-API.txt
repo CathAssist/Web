@@ -1,0 +1,27 @@
+所有返回的数据都为json数据
+
+1、获取最新的播放列表
+	http://www.cathassist.org/radio/getradio.php
+2、获取某电台的最新列表（以福音i广播为例）
+	http://www.cathassist.org/radio/getradio.php?channel=ai
+3、获取某电台某日期的播放列表（以福音i广播为例）
+	http://www.cathassist.org/radio/getradio.php?channel=ai&date=2015-05-01
+
+
+返回数据格式说明：
+	1、列表返回说明
+		a.key-val格式的数据
+		b.key为电台对应的key（很重要，作为channel的输入参数），如“福音i广播”的key为:ai;梵蒂冈广播为:vacn
+		c.val为各电台的最新信息和播放列表
+	2、某电台的返回说明
+		a.title:表示电台名称
+		b.date:当前播放列表的真实日期（有可能和输入参数date不一致）
+		c.logo:电台的logo
+		d.desc:电台的描述或slogan
+		d.items:播放列表(数组)
+			aa.title 音频标题
+			bb.src 音频链接
+
+其它：
+	电台的介绍链接（以福音i广播为例）
+		关于本电台链接为： http://www.cathassist.org/radio/about.php?channel=ai  其它电台依此类推，将后面channel的参数改为对应的key即可
