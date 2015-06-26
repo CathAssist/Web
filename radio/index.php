@@ -170,13 +170,13 @@
 	echo('playLists = [');
 	foreach($arr->items as $item)
 	{
-		echo('{title:"'.$item->title.'",mp3:"'.$item->src.'"},');
+		echo('{title:unescape('.json_encode($item->title).'),mp3:unescape('.json_encode($item->src).')},');
 	}
 	echo('];'."\n");
 	
-	echo('playTitle="'.$arr->title.'";'."\n");
+	echo('playTitle=unescape('.json_encode($arr->title).');'."\n");
 	echo('playLogo="'.$arr->logo.'";'."\n");
-	echo('playDesc="'.$arr->desc.'";'."\n");
+	echo('playDesc=unescape('.json_encode($arr->desc).');'."\n");
 	echo('curDate = new Date("'.$arr->date.'");'."\n");
 ?>
     //]]>

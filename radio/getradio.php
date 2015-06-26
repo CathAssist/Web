@@ -168,7 +168,7 @@
 			$ret['key'] = 'smzy';
 			$ret['title'] = '生命之言';
 			$ret['logo'] = 'http://www.cathassist.org/radio/logos/smzy.png';
-			$ret['desc'] = '听神父分享"生命之言"';
+			$ret['desc'] = '听神父讲道';
 			return $ret;
 		}
 		
