@@ -252,6 +252,8 @@
 			{
 				$cxjson = json_decode(file_get_contents($cxfile),true);
 			}
+
+			unset($cxjson["desc"]);
 			return $cxjson;
 		}
 	}
@@ -297,6 +299,9 @@
 				$aijson = json_decode(file_get_contents($aifile),true);
 				$aijson["desc"] = "来自8090的声音";
 			}
+
+			//ios版福音i广播在此有bug，只能先将desc字段移出
+			unset($aijson["desc"]);
 			return $aijson;
 		}
 	}
