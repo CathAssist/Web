@@ -151,7 +151,7 @@
 					return null;
 				}
 				file_put_contents($ccfile,json_encode($ccjson));
-//				BaseChannel::append2All($ukey,$ccjson);
+				BaseChannel::append2All($ukey,$ccjson);
 			}
 			else
 			{
@@ -185,7 +185,7 @@
 			$ret['key'] = 'hyqd';
 			$ret['title'] = '合一祈祷';
 			$ret['logo'] = 'http://www.cathassist.org/radio/logos/hyqd.jpg';
-			$ret['desc'] = '';
+			$ret['desc'] = '一起听神父讲道';
 			return $ret;
 		}
 		
@@ -202,7 +202,7 @@
 			$ret['key'] = 'cztzd';
 			$ret['title'] = '诚者天之道';
 			$ret['logo'] = 'http://www.cathassist.org/radio/logos/cztzd.jpg';
-			$ret['desc'] = '';
+			$ret['desc'] = '一起听神父讲道';
 			return $ret;
 		}
 		
