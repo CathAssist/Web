@@ -170,7 +170,7 @@
 	echo('playLists = [');
 	foreach($arr->items as $item)
 	{
-		echo('{title:unescape('.json_encode($item->title).'),mp3:unescape('.json_encode($item->src).')},');
+		echo('{title:unescape('.json_encode($item->title).'),mp3:"'.$item->src.'"},');
 	}
 	echo('];'."\n");
 	
