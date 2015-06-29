@@ -197,6 +197,8 @@
                             <option value="cx">晨星生命之音</option>
                             <option value="gos">每日福音</option>
                             <option value="smzy">生命之言</option>
+                            <option value="cztzd">诚者天之道</option>
+                            <option value="hyqd">合一祈祷</option>
                         </select>
                         <b id="jptitle">梵蒂冈广播</b>
                     </span>
