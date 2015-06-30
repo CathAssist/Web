@@ -3,7 +3,7 @@
 	<title>天主教小助手网络电台</title>
 	<meta http-equiv=Content-Type content="text/html;charset=utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width, minimal-ui" />
-	<link rel="stylesheet" type="text/css" href="http://cathassist.org/js/jPlayer/skin/cd/cd.css"/>
+	<link rel="stylesheet" type="text/css" href="/js/jPlayer/skin/cd/cd.new.css"/>
 	<style type="text/css">
 		.title-bar select{
 			padding: 5px;
@@ -43,13 +43,14 @@
 		var r = window.location.search.substr(1).match(reg);
 		if (r != null) return unescape(r[2]); return null;
     }
-	
+
 	function updateHref()
 	{
-		var state = "index.php?channel="+channel+"&date="+curDate.Format("yyyy-MM-dd");
-		var loc = "http://www.cathassist.org/radio/"+state;
-		window.location.href = loc;
-//		window.history.pushState([],0,state);
+        return false;
+//		var state = "index.php?channel="+channel+"&date="+curDate.Format("yyyy-MM-dd");
+//		var loc = "http://www.cathassist.org/radio/"+state;
+//		window.location.href = loc;
+////		window.history.pushState([],0,state);
 	}
 
 	function getRadio(_d)
@@ -66,8 +67,11 @@
 				list[key]['title'] = val['title'];
 				list[key]['mp3'] = val['src'];
 			});
-			
+            $(".jp-playlist").hide();
 			ppl.setPlaylist(list);
+            if(typeof(list[1])=="object"){
+                $(".jp-playlist").show();
+            }
 			$("#jptitle").html(data['title']);
 			$("#jpimg").attr("src",data["logo"]);
 			curDate = new Date(data['date']);
@@ -111,21 +115,23 @@
 			smoothPlayBar: true,
 			keyEnabled: true
 		});
-		var snapper = new Snap({
-            element: $('.jp-interface')[0],
-            disable: 'left'
-        });
         $('.open-right').click(function(){
-            snapper.open('right')
+            $(".jp-playlist").toggle();
         });
 		
 		//channel changed
-		$("#jpchannel").change(function()
-		{
-			channel = $("#jpchannel").val();
-			getRadio(curDate);
-			updateHref();
-		});
+//		$("#jpchannel").change(function()
+//		{
+//			channel = $("#jpchannel").val();
+//			getRadio(curDate);
+//			updateHref();
+//		});
+        $("#cp-channel-list li").click(function(){
+            $(this).addClass("active").siblings().removeClass("active")
+            channel = $(this).attr("data-channel");
+            getRadio(curDate);
+            updateHref();
+        })
 		
 		//prev day
 		$("#prevBtn").click(function()
@@ -157,9 +163,7 @@
 		{
 			curDate = new Date(argD);
 		}
-		
-		$("#jpchannel").val(argC);
-		channel = $("#jpchannel").val();
+		channel =argC;
 		getRadio(curDate);
     });
 	
@@ -178,12 +182,6 @@
                 <div class="title-bar">
                     <a href="#" class="open-right"></a>
                     <span class="wrap">
-                        <select id="jpchannel">
-                            <option value="cx">晨星生命之音</option>
-                            <option value="ai">福音i广播</option>
-                            <option value="vacn">梵蒂冈广播</option>
-                            <option value="gos">每日福音</option>
-                        </select>
                         <b id="jptitle">晨星生命之音</b>
                     </span>
 					<!--<h2 id="jptitle">天主教小助手网络电台</h2>-->
@@ -199,29 +197,28 @@
                     <div class="cp-progress-2"></div>
                 </div>
                 <div class="cp-circle-control"></div>
-                <div class="cover jp-type-single">
-                    <div class="disc">
-                        <img id="jpimg" alt="" src="http://cathassist.org/logo.jpg">
-                        <span class="opt need-active play jp-play"><i></i>播放</span>
-                        <span class="opt need-active play jp-pause"><i></i>暂停</span>
-                    </div>
-                    <div class="count-down">
-                        <span class="crescent"></span>
-                        <span class="remain jp-current-time"></span>
-                    </div>
-                    <!-- 磁头手柄 -->
-                    <div class="mag-head off-off"></div>
+                <div class="cp-channel-list" id="cp-channel-list">
+                    <ul >
+                        <li data-channel="cx">晨星生命之音</li>
+                        <li data-channel="ai">福音i广播</li>
+                        <li data-channel="vacn">梵蒂冈广播</li>
+                        <li data-channel="gos">每日福音</li>
+                    </ul>
                 </div>
-                <div class="control">
-                    <div class="prev jp-previous"></div>
-                    <div class="title">
-                        <h2></h2>
+
+                <div class="cp-showbox">
+                    <div class="control cp-control">
+                        <div class="control-con">
+                            <div class="prev jp-previous"></div>
+                            <span class="opt need-active play jp-play"><i></i>播放</span>
+                            <span class="opt need-active play jp-pause"><i></i>暂停</span>
+                            <div class="next jp-next"></div>
+                        </div>
                     </div>
-                    <div class="next jp-next"></div>
-                </div>
-                <div class="jp-progress">
-                    <div class="jp-seek-bar">
-                        <div class="jp-play-bar"></div>
+                    <div class="jp-progress">
+                        <div class="jp-seek-bar">
+                            <div class="jp-play-bar"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="date-control">
@@ -243,6 +240,5 @@
             </div>
         </div>
     </div>
-    </script>
 </body>
 </html>

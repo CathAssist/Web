@@ -45,20 +45,14 @@ html, body {
 
 .snap-drawers {
   position: absolute;
-  top: 0;
+  top:44px;
   right: 0;
-  bottom: 0;
-  left: 0;
-  width: auto;
+    border-left: 1px solid #ccc;
+  width: 265px;
   height: auto;
 }
 
 .snap-drawer {
-  position: absolute;
-  top: 0;
-  right: auto;
-  bottom: 0;
-  left: auto;
   width: 265px;
   height: auto;
   overflow: auto;
@@ -68,6 +62,10 @@ html, body {
       -ms-transition: width 0.3s ease;
        -o-transition: width 0.3s ease;
           transition: width 0.3s ease;
+}
+.snap-drawer li{
+    height: 40px;
+    line-height: 40px;
 }
 
 .snap-drawer-left {
@@ -104,10 +102,9 @@ html, body {
     height: 100%;
 }
 .jp-audio .cover {
-    position: relative;
-    margin: 0 auto;
-    width: 253px;
-    height: 253px;
+   float:left;
+    width: 100px;
+    height: 100px;
 }
 .jp-audio .cover .disc {
     background: url("cd.png") no-repeat 0 0;
@@ -115,26 +112,26 @@ html, body {
     -moz-background-size: 253px 253px;
     -o-background-size: 253px 253px;
     background-size: 253px 253px;
-    width: 253px;
-    height: 253px;
-    -webkit-border-radius: 126px;
-    -moz-border-radius: 126px;
-    border-radius: 126px;
+    width: 100px;
+    height: 100px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
     position: relative;
 }
 .jp-audio .cover .disc img {
     -webkit-perspective: 1000;
     -webkit-backface-visibility: hidden;
-    -webkit-border-radius: 65px;
-    -moz-border-radius: 65px;
-    border-radius: 65px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: -65px;
-    margin-top: -65px;
-    height: 130px;
-    width: 130px;
+    margin-left: -25px;
+    margin-top: -25px;
+    height: 50px;
+    width: 50px;
     -webkit-transition: linear all 4800s;
     -moz-transition: linear all 4800s;
     -o-transition: linear all 4800s;
@@ -144,7 +141,7 @@ html, body {
     -o-animation-delay: 1s;
     animation-delay: 1s;
 }
-.jp-audio .cover .disc img.cycling {
+.jp-audio .cp-control  img.cycling {
     -webkit-perspective: 1000;
     -webkit-backface-visibility: hidden;
     -webkit-animation: cd-playing2 linear 32s infinite;
@@ -158,45 +155,35 @@ html, body {
     -o-animation-play-state:paused;
     animation-play-state:paused;
 }
-.jp-audio .cover .disc .opt {
-    font: 0/0 a;
+.jp-audio .cp-control .opt {
     display: block;
-    width: 100%;
-    height: 100%;
-    position: relative;
+    width: 40px;
+    height: 40px;
+    float: left;
+    margin: 0px 5px;
+    overflow: hidden;
 }
-.jp-audio .cover .disc .opt i{
-    color: transparent;
-    text-shadow: none;
-    background-color: transparent;
-    border: 0;
-    -webkit-border-radius: 24px;
-    -moz-border-radius: 24px;
-    border-radius: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -21px;
-    margin-top: -21px;
-    height: 42px;
-    width: 42px;
+.jp-audio .cp-control .opt i{
+    display: block;
+    height: 40px;
+    width: 40px;
     background: url("ctrl.png") no-repeat 0px -44px;
-    -webkit-background-size: 41px 85px;
-    -moz-background-size: 41px 85px;
-    -o-background-size: 41px 85px;
-    background-size: 41px 85px;
+    -webkit-background-size: 40px 84px;
+    -moz-background-size: 40px 84px;
+    -o-background-size: 40px 84px;
+    background-size: 40px 84px;
 }
-.jp-audio .cover .disc .opt.jp-pause i{
+.jp-audio .cp-control .opt.jp-pause i{
 	background-position: 0 0;
 }
 .jp-audio .cover .count-down {
     position: absolute;
-    bottom: 60px;
+    bottom: 10px;
     left: 50%;
-    margin-left: -65px;
-    margin-top: -65px;
-    height: 25px;
-    width: 130px;
+    margin-left: -50px;
+    margin-top: -50px;
+    height: 15px;
+    width: 100px;
     overflow: hidden;
     pointer-events:none;
 }
@@ -447,8 +434,10 @@ html, body {
     color: #999;
 }
 .jp-progress {
+    float: left;
+    width: 47%;
     height:10px;
-    padding: 20px 0;
+    padding: 15px 0;
 }
 .jp-seek-bar {
     height:4px;
@@ -485,21 +474,33 @@ html, body {
     background: #007AFF;
     opacity: .8;
 }
-.control {
-    margin: 10px 0 0;
+.cp-control{
+    width: 50%;
+    float: left;
+}
+.cp-control .control-con{
+    width: 150px;
+    margin: 0px auto;
+}
+.cp-control .control-con:after{
+    clear:both;
+    display: block;
+    content:" ";
+    height: 0;
+    line-height: 0;
+    width: 0;
 }
 .next, .prev {
-    width: 36px;
-    height: 36px;
-    background: url(next.png) no-repeat 0 0;
+    width: 40px;
+    height: 40px;
+    background: url(next.png) no-repeat 5px center;
     background-size: 80px 40px;
     cursor: pointer;
     display: inline-block;
-    margin: 0 0 0 10px;
+    float: left;
 }
 .prev {
     background-position: -40px 0;
-    margin: 0 10px 0 0;
 }
 .jp-interface {
     background: #fff;
@@ -516,7 +517,8 @@ html, body {
 }
 .jp-playlist {
     background: #eee;
-    z-index: 0;
+    display: none;
+    z-index: 2;
 }
 
 .jp-playlist ul {
@@ -531,8 +533,49 @@ html, body {
     border-bottom:1px solid #ccc;
     overflow: hidden;
 }
+.cp-channel-list{
+    width: 100%;
+    height: auto;
+}
+.cp-channel-list ul,.cp-channel-list ul li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.cp-channel-list ul{
+    width: 100%;
+}
 
+.cp-channel-list li{
+    height: 50px;
+    line-height: 50px;
+    width: 100%;
+    text-indent: 3px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+.cp-channel-list li.active{
+    background: #f1f1f1;
+}
+.cp-showbox{
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    padding: 15px 0px;
+    bottom: 0px;
+    background: #000000;
+    left: 0px;
 
+}
+.cp-showbox:after{
+    clear:both;
+    display: block;
+    content:" ";
+    height: 0;
+    line-height: 0;
+    width: 0;
+}
+.cp-showbox
 div.jp-type-playlist div.jp-playlist a {
     color: #000;
     text-decoration:none;
@@ -551,16 +594,18 @@ div.jp-type-playlist div.jp-playlist li.jp-playlist-current {
 div.jp-type-playlist div.jp-playlist li.jp-playlist-current a{
     color: #000;
 }
-
+div.jp-type-playlist div.jp-playlist a.jp-playlist-item {
+    text-decoration: none;
+}
 div.jp-type-playlist div.jp-playlist a.jp-playlist-item-remove {
     float:right;
-    display:inline;
     text-align:right;
     margin-left:10px;
     font-weight:bold;
     color:#007AFF!important;
     font-size: 24px;
     line-height: 20px;
+    display: none !important;
 }
 
 div.jp-type-playlist div.jp-playlist span.jp-free-media {
@@ -595,10 +640,7 @@ span.jp-artist {
 }
 
 .date-control {
-    border-top: 1px solid #ddd;
     line-height: 50px;
-    position: relative;
-    margin: 0 -20px;
     padding: 0 10px;
 }
 .date-control input, .date-control button {
@@ -630,15 +672,7 @@ span.jp-artist {
     display: inline-block;
     padding: 14px 0;
 }
-.title-bar .wrap b:after{
-    content: ' ';
-    display: inline-block;
-    width: 1px;
-    border: 4px #000 solid;
-    border-width: 7px 4px 0;
-    margin: 5px 4px 2px;
-    border-color: #000 transparent transparent;
-}
+
 @-webkit-keyframes cd-playing2 {
   0%   { -webkit-transform: rotate(0deg);}
   50%  { -webkit-transform: rotate(180deg); }
