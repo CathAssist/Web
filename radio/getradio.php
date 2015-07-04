@@ -391,7 +391,16 @@
 	$date = time()+3600*8;
 	if(array_key_exists("date",$_GET))
 	{
-		$date = DateTime::createFromFormat('Y-m-d',$_GET["date"])->getTimestamp();
+		$argDate = DateTime::createFromFormat('Y-m-d',$_GET["date"]);
+		if($argDate == false)
+		{
+			$date = time();
+		}
+		else
+		{
+			$date = $argDate->getTimestamp();
+		}
+
 		$date = $date+3600*8;
 		if($date>time()+3600*8)
 		{
