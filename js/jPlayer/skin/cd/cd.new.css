@@ -635,8 +635,23 @@ span.jp-artist {
     position: absolute;
     top:10px;
     right: 10px;
-    background: url(icon_menu.png) no-repeat center center;
-    background-size: 22px 22px;
+
+}
+
+.open-right img{
+    display: block;
+    width: 22px;
+    height: 22px;
+
+}
+.open-right img.gray{
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+    filter: gray;
+
 }
 
 .date-control {
