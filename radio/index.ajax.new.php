@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>天主教小助手网络电台</title>
+    <title>电台小助手(Powered By cathassist.org)</title>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
     <meta name="viewport" content="width=320, minimum-scale=1, maximum-scale=1 ,initial-scale=1,user-scalable=no"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -82,12 +82,12 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="http://cathassist.org/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
-<script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
 
-<script type="text/javascript" language="javascript" src="http://cathassist.org/include/googleanalysis.js"></script>
-<script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/googleanalysis.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/common.js"></script>
 
 <script type="text/javascript" language="javascript" src="/js/jquery.hash.min.js"></script>
 <script>
@@ -136,10 +136,6 @@ function getQueryString(name) {
     return null;
 }
 
-function updateHref() {
-    return false;
-}
-
 function getRadio(_d) {
     console.log("getradio...");
     $.hash.set("date", _d.Format("yyyy-MM-dd"));
@@ -161,7 +157,7 @@ function getRadio(_d) {
         } else {
             $(".open-right").addClass("gray");
         }
-        var title = channelDescMap[channel];
+        var title = channelDescMap[channel] + "——电台小助手";
         $("#jptitle").html(title);
         curDate = new Date(data['date']);
         $("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
@@ -206,7 +202,7 @@ $(document).ready(function () {
         ended: function () {
             $('.disc img').removeClass('paused cycling')
         },
-        swfPath: "http://cathassist.org/js/jPlayer/js",
+        swfPath: "http://www.cathassist.org/js/jPlayer/js",
         supplied: "oga, mp3",
         wmode: "window",
         smoothPlayBar: true,
@@ -219,7 +215,7 @@ $(document).ready(function () {
     if (argD != null && argD != "") {
         curDate = new Date(argD);
     }
-    channel = argC ? argC : "cx";
+    channel = argC ? argC : "vacn";
     getRadio(curDate);
 
     var winHeight = $(window).height();
@@ -249,7 +245,7 @@ $(document).ready(function () {
         data = jQuery.parseJSON(data);
         var listarr = [];
         for (var key in data) {
-            channelDescMap[key] = data[key].title;
+            channelDescMap[key] = data[key].title + "（"+data[key].desc+"）";
             listarr.push('<li data-channel="' + key + '">' + data[key].title + '</li>');
         }
         $("#cp-channel-list ul").html(listarr.join(""));
@@ -261,13 +257,11 @@ $(document).ready(function () {
     $("#prevBtn").click(function () {
         curDate.setDate(curDate.getDate() - 1);
         getRadio(curDate);
-        updateHref();
     });
     //next day
     $("#nextBtn").click(function () {
         curDate.setDate(curDate.getDate() + 1);
         getRadio(curDate);
-        updateHref();
     });
     $("#dateBtn").change(function () {
         curDate = new Date($("#dateBtn").val());
@@ -277,7 +271,6 @@ $(document).ready(function () {
     $("#dateBtn").blur(function (event) {
         curDate = new Date($("#dateBtn").val());
         getRadio(curDate);
-        updateHref();
     });
 
 
