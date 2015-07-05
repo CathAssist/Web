@@ -2,7 +2,6 @@
 <head>
     <title>天主教小助手网络电台</title>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
-    <link rel="icon" type="image/x-icon" href="../public/images/favicon.ico" />
     <meta name="viewport" content="width=320, minimum-scale=1, maximum-scale=1 ,initial-scale=1,user-scalable=no" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="format-detection" content="email=no" />
@@ -15,7 +14,6 @@
     <style type="text/css">
     </style>
     <script type="text/javascript" src="http://cathassist.org/js/jquery-1.9.1.min.js"></script>
-    <script type="text/javascript" src="/js/jqueryMobile.js"></script>
     <script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jquery.jplayer.min.js"></script>
     <script type="text/javascript" src="http://cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
 
