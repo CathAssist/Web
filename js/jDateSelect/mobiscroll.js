@@ -62,5 +62,7 @@ $("#dateBtn").mobiscroll(opt_data);
 setTimeout(function(){
     $(".ui-page").removeClass("ui-page").removeAttr("data-role").removeClass("ui-body-c ui-page-active");
     $("#prevBtn,#nextBtn").prev("span").css("padding", "0");
-
+    $(".date-control").css({"width":"500px","margin":"0px auto"}).find("div").css({"width":"30%","float":"left"});
+    $(".date-control").find("div").eq(1).css("margin","15px 10px 0px")
+    $(".date-control").append('<div style="clear:both"></div>');
 },10)

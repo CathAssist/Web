@@ -54,8 +54,12 @@
 
                         <div class="next jp-next"></div>
                     </div>
+
                 </div>
                 <div class="jp-progress">
+                    <div class="title">
+                        <h2></h2>
+                    </div>
                     <div class="jp-seek-bar">
                         <div class="jp-play-bar"></div>
                     </div>
@@ -152,7 +156,7 @@ function getRadio(_d) {
         $(".jp-playlist").hide();
         ppl.setPlaylist(list);
         if (typeof(list[1]) == "object") {
-            $(".jp-playlist").show();
+            //$(".jp-playlist").show();
             $(".open-right").removeClass("gray");
         } else {
             $(".open-right").addClass("gray");

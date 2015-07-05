@@ -237,21 +237,18 @@ html, body {
     display: inline-block;
 }
 .jp-audio .title h2 {
-    font-family: Hiragino Sans GB W3;
     text-align: center;
-    color: #121212;
-    -webkit-box-flex: 1;
-    -moz-box-flex: 1;
-    box-flex: 1;
+    color: white;
     margin: 0 auto;
     width: 170px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     position: relative;
-    font-size: 18px;
-    line-height: 36px;
-    height: 36px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: normal;
+    height: 20px;
 }
 .jp-audio .title .album-songs {
     width: 38px;
@@ -430,19 +427,22 @@ html, body {
     float: left;
     width: 47%;
     height:10px;
-    padding: 15px 0;
+    padding: 5px 0;
+}
+.jp-progress .title{
+    margin-top: -8px;
 }
 .jp-seek-bar {
     height:4px;
     border-radius: 2px;
     background: #aaa;
     position: relative;
+    margin-top: 5px;
 }
 .jp-play-bar {
     height:20px;
     position: relative;
     overflow: visible!important;
-    margin-top: -8px;
 }
 
 .jp-play-bar:after {
