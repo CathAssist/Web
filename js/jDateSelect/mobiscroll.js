@@ -41,3 +41,26 @@ q=function(a){v(a);a=j.substr(s).match(RegExp("^\\d{1,"+("@"==a?14:"!"==a?20:"y"
 q("m");break;case "M":n=y("M",f.monthNamesShort,f.monthNames);break;case "y":p=q("y");break;case "H":m=q("H");break;case "h":m=q("h");break;case "i":u=q("i");break;case "s":x=q("s");break;case "a":l=y("a",["am","pm"],["am","pm"])-1;break;case "A":l=y("A",["am","pm"],["am","pm"])-1;break;case "'":v("'")?s++:d=!0;break;default:s++}100>p&&(p+=(new Date).getFullYear()-(new Date).getFullYear()%100+(p<=("string"!=typeof t?t:(new Date).getFullYear()%100+parseInt(t,10))?0:-100));if(-1<c){n=1;e=c;do{f=32-
 (new Date(p,n-1,32)).getDate();if(e<=f)break;n++;e-=f}while(1)}m=new Date(p,n-1,e,-1==l?m:l&&12>m?m+12:!l&&12==m?0:m,u,x);if(m.getFullYear()!=p||m.getMonth()+1!=n||m.getDate()!=e)throw"Invalid date";return m}})(jQuery);(function(a){a.mobiscroll.themes.android={defaults:{dateOrder:"Mddyy",mode:"clickpick",height:50}}})(jQuery);(function(a){var g={defaults:{dateOrder:"Mddyy",mode:"mixed",rows:5,width:70,height:36,showLabel:!1}};a.mobiscroll.themes["android-ics"]=g;a.mobiscroll.themes["android-ics light"]=g})(jQuery);(function(a){a.mobiscroll.themes.ios={defaults:{dateOrder:"MMdyy",rows:5,height:30,width:55,headerText:!1,showLabel:!1}}})(jQuery);(function(a){a.mobiscroll.themes.jqm={defaults:{jqmBorder:"a",jqmBody:"c",jqmHeader:"b",jqmWheel:"d",jqmClickPick:"c",jqmSet:"b",jqmCancel:"c"},init:function(g,t){var k=t.settings;a(".dw",g).removeClass("dwbg").addClass("ui-overlay-shadow ui-corner-all ui-body-"+k.jqmBorder);a(".dwb-s span",g).attr("data-role","button").attr("data-theme",k.jqmSet);a(".dwb-n span",g).attr("data-role","button").attr("data-theme",k.jqmCancel);a(".dwb-c span",g).attr("data-role","button").attr("data-theme",k.jqmCancel);
 a(".dwwb",g).attr("data-role","button").attr("data-theme",k.jqmClickPick);a(".dwv",g).addClass("ui-header ui-bar-"+k.jqmHeader);a(".dwwr",g).addClass("ui-body-"+k.jqmBody);a(".dwpm .dwwl",g).addClass("ui-body-"+k.jqmWheel);a(".dwpm .dwl",g).addClass("ui-body-"+k.jqmBody);g.trigger("create");a(".dwo",g).click(function(){t.cancel()})}}})(jQuery);(function(a){a.mobiscroll.themes.wp={defaults:{width:70,height:76,accent:"none",dateOrder:"mmMMddDDyy"},init:function(g,t){var k,y;a(".dw",g).addClass("wp-"+t.settings.accent);a(".dwwl",g).bind("touchstart mousedown DOMMouseScroll mousewheel",function(){k=!0;y=a(this).hasClass("wpa");a(".dwwl",g).removeClass("wpa");a(this).addClass("wpa")}).bind("touchmove mousemove",function(){k=!1}).bind("touchend mouseup",function(){k&&y&&a(this).removeClass("wpa")})}};a.mobiscroll.themes["wp light"]=a.mobiscroll.themes.wp})(jQuery);
+var opt_data = {
+    preset: 'date', //日期格式 date（日期）|datetime（日期加时间）
+    theme: 'jqm', //皮肤样式
+    display: 'modal', //显示方式
+    mode: 'clickpick', //日期选择模式
+    dateFormat: 'yy-mm-dd', // 日期格式
+    setText: '确定', //确认按钮名称
+    cancelText: '取消',//取消按钮名籍我
+    dateOrder: 'yymmdd', //面板中日期排列格式
+    dayText: '日', monthText: '月', yearText: '年', //面板中年月日文字
+    yearText: '年', monthText: '月', dayText: '日',  //面板中年月日文字
+    endYear: 2020, //结束年份
+    showNow: true,
+    nowText: '今天',
+    hourText: '小时',
+    minuteText: '分'
+};
+$("#dateBtn").mobiscroll(opt_data);
+setTimeout(function(){
+    $(".ui-page").removeClass("ui-page").removeAttr("data-role").removeClass("ui-body-c ui-page-active");
+    $("#prevBtn,#nextBtn").prev("span").css("padding", "0");
+
+},10)
