@@ -91,13 +91,6 @@ html, body {
 .jp-audio {
     text-align: center;
     overflow: hidden;
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    box-orient: vertical;
-    position: relative;
     width: 100%;
     height: 100%;
 }
@@ -506,9 +499,8 @@ html, body {
     background: #fff;
     position: absolute;
     overflow: hidden;
-    overflow-y: auto;
     z-index: 1;
-    padding: 64px 20px 20px;
+    padding: 44px 0px 20px;
     top: 0;
     bottom: 0;
     left: 0;
@@ -565,7 +557,8 @@ html, body {
     bottom: 0px;
     background: #000000;
     left: 0px;
-
+    bottom: 0px;
+    z-index: 1000;
 }
 .cp-showbox:after{
     clear:both;
@@ -634,25 +627,17 @@ span.jp-artist {
     height: 22px;
     position: absolute;
     top:10px;
-    right: 10px;
+    right: 20px;
+    background: url(icon_menu.png) no-repeat center center;
+    background-size: 22px 22px;
+
 
 }
-
-.open-right img{
-    display: block;
-    width: 22px;
-    height: 22px;
-
+.open-right.gray {
+    background: url(icon_menu_gray.png) no-repeat center center;
+    background-size: 22px 22px;
 }
-.open-right img.gray{
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    -o-filter: grayscale(100%);
-    filter: grayscale(100%);
-    filter: gray;
 
-}
 
 .date-control {
     line-height: 50px;
@@ -687,7 +672,10 @@ span.jp-artist {
     display: inline-block;
     padding: 14px 0;
 }
-
+.cp-content-box{
+    overflow-x:hidden;
+    padding:10px;
+}
 @-webkit-keyframes cd-playing2 {
   0%   { -webkit-transform: rotate(0deg);}
   50%  { -webkit-transform: rotate(180deg); }

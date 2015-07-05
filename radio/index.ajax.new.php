@@ -2,15 +2,17 @@
 <head>
     <title>天主教小助手网络电台</title>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
-    <meta name="viewport" content="user-scalable=no, width=device-width, minimal-ui"/>
+    <link rel="icon" type="image/x-icon" href="../public/images/favicon.ico" />
+    <meta name="viewport" content="width=320, minimum-scale=1, maximum-scale=1 ,initial-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="format-detection" content="email=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <link rel="stylesheet" type="text/css" href="/js/jDateSelect/css/jqueryMobile.css"/>
     <link rel="stylesheet" type="text/css" href="/js/jDateSelect/css/mobiscroll.css"/>
     <link rel="stylesheet" type="text/css" href="/js/jPlayer/skin/cd/cd.new.css"/>
 
     <style type="text/css">
-        .jp-interface{
-            margin-bottom: 70px;
-        }
     </style>
     <script type="text/javascript" src="http://cathassist.org/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="/js/jqueryMobile.js"></script>
@@ -67,9 +69,9 @@
                 ppl.setPlaylist(list);
                 if (typeof(list[1]) == "object") {
                     $(".jp-playlist").show();
-                    $("#right_menu_icon").removeClass("gray");
+                    $(".open-right").removeClass("gray");
                 }else{
-                    $("#right_menu_icon").addClass("gray");
+                    $(".open-right").addClass("gray");
                 }
                 var title = channelDescMap[channel];
                 $("#jptitle").html(title);
@@ -155,11 +157,12 @@
 
             var winHeight = $(window).height();
             $(".snap-drawer").css("height",winHeight-44-70);
+            $(".cp-content-box").css("height",winHeight-44-70-20);
             /**
              *切换二级列表页面
              */
             $('.open-right').click(function () {
-                if(!$("#right_menu_icon").hasClass("gray")){
+                if(!$(this).hasClass("gray")){
                     $(".jp-playlist").toggle();
                 }else{
                     return false;
@@ -221,33 +224,36 @@
     <div class="jp-type-playlist">
         <div class="jp-gui jp-interface">
             <div class="title-bar">
-                <a href="#" class="open-right"><img src="/js/jPlayer/skin/cd/icon_menu.png" class="gray" id="right_menu_icon"></a>
+                <a href="#" class="open-right gray"></a>
                     <span class="wrap">
                         <b id="jptitle"></b>
                     </span>
                 <!--<h2 id="jptitle">天主教小助手网络电台</h2>-->
             </div>
-            <div class="cp-buffer-holder">
-                <!-- .cp-gt50 only needed when buffer is > than 50% -->
-                <div class="cp-buffer-1"></div>
-                <div class="cp-buffer-2"></div>
-            </div>
-            <div class="cp-progress-holder">
-                <!-- .cp-gt50 only needed when progress is > than 50% -->
-                <div class="cp-progress-1"></div>
-                <div class="cp-progress-2"></div>
-            </div>
-            <div class="cp-circle-control"></div>
-            <div class="cp-channel-list" id="cp-channel-list">
-                <ul>
-                </ul>
+            <div class="cp-content-box">
+                <div class="cp-buffer-holder">
+                    <!-- .cp-gt50 only needed when buffer is > than 50% -->
+                    <div class="cp-buffer-1"></div>
+                    <div class="cp-buffer-2"></div>
+                </div>
+                <div class="cp-progress-holder">
+                    <!-- .cp-gt50 only needed when progress is > than 50% -->
+                    <div class="cp-progress-1"></div>
+                    <div class="cp-progress-2"></div>
+                </div>
+                <div class="cp-circle-control"></div>
+                <div class="cp-channel-list" id="cp-channel-list">
+                    <ul>
+                    </ul>
+                </div>
+
+                <div class="date-control">
+                    <button id="prevBtn">上一天</button>
+                    <input id="dateBtn" type="text" value="2014/03/08" />
+                    <button id="nextBtn">下一天</button>
+                </div>
             </div>
 
-            <div class="date-control">
-                <button id="prevBtn">上一天</button>
-                <input id="dateBtn" type="text" value="2014/03/08" />
-                <button id="nextBtn">下一天</button>
-            </div>
 
             <div class="cp-showbox">
                 <div class="control cp-control">
