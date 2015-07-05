@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>电台小助手(Powered By cathassist.org)</title>
+    <title>电台小助手</title>
     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
     <meta name="viewport" content="width=320, minimum-scale=1, maximum-scale=1 ,initial-scale=1,user-scalable=no"/>
     <meta name="format-detection" content="telephone=no"/>
@@ -87,7 +87,7 @@
 <script type="text/javascript" src="http://www.cathassist.org/js/jPlayer/js/jplayer.playlist.min.js"></script>
 
 <script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/googleanalysis.js"></script>
-<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/common.js"></script>
+<script type="text/javascript" language="javascript" src="http://www.cathassist.org/include/common.js?ver=1.1"></script>
 
 <script type="text/javascript" language="javascript" src="/js/jquery.hash.min.js"></script>
 <script>
@@ -157,11 +157,12 @@ function getRadio(_d) {
         } else {
             $(".open-right").addClass("gray");
         }
-        var title = channelDescMap[channel] + "——电台小助手";
+        var title = channelDescMap[channel].title;
+        var titleShare = channelDescMap[channel].title + "("+ channelDescMap[channel].desc +")";
         $("#jptitle").html(title);
         curDate = new Date(data['date']);
         $("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
-        SetWechatShare(title, window.location.href, data['logo'], title);
+        SetWechatShare(titleShare, window.location.href, data['logo'], titleShare);
     });
 }
 
@@ -239,19 +240,23 @@ $(document).ready(function () {
             $(".snap-drawers").css({"top": fixtop, height: winHeight - 70 - fixtop});
             $(".snap-drawer").css("height", winHeight - 70 - fixtop);
         }
-    })
+    });
+
+
     //获取一级列表
-    $.get("getradio.php", function (data) {
-        data = jQuery.parseJSON(data);
+    {
+        var data = <?php echo json_encode(json_decode(file_get_contents("http://www.cathassist.org/radio/getradio.php"))); ?>;
         var listarr = [];
         for (var key in data) {
-            channelDescMap[key] = data[key].title + "（"+data[key].desc+"）";
+            channelDescMap[key] = {};
+            channelDescMap[key].title = data[key].title;
+            channelDescMap[key].desc = data[key].desc;
             listarr.push('<li data-channel="' + key + '">' + data[key].title + '</li>');
         }
         $("#cp-channel-list ul").html(listarr.join(""));
         $("#cp-channel-list li[data-channel='" + channel + "']").addClass("active");
         bindChannelSelect();
-    })
+    }
 
     //prev day
     $("#prevBtn").click(function () {

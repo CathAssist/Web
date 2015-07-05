@@ -7,7 +7,7 @@
 function SetWechatShare(title,link,img,desc)
 {
 	var imgUrl = img;
-	var lineLink = location.href.split('#')[0];
+	var lineLink = link;//location.href.split('#')[0];
 	var descContent = desc;
 	var shareTitle = title;
 	if (imgUrl == null || imgUrl == '' || imgUrl == 'undefined')
