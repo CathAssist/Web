@@ -21,6 +21,7 @@
     <script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script>
     <script type="text/javascript" language="javascript" src="/js/jDateSelect/jqueryMobile.js"></script>
     <script type="text/javascript" language="javascript" src="/js/jDateSelect/mobiscroll.js"></script>
+    <script type="text/javascript" language="javascript" src="/js/jquery.hash.min.js"></script>
     <script>
         var ppl = null;
         var curDate = new Date();
@@ -54,6 +55,8 @@
 
         function getRadio(_d) {
             console.log("getradio...");
+            $.hash.set("date",_d.Format("yyyy-MM-dd"));
+            $.hash.set("channel",channel);
             ppl.pause();
             $.get("getradio.php?channel=" + channel + "&date=" + _d.Format("yyyy-MM-dd"), function (data) {
                 data = jQuery.parseJSON(data);
@@ -72,10 +75,8 @@
                     $(".open-right").addClass("gray");
                 }
                 var title = channelDescMap[channel];
-                $("#jptitle").html(title);
                 curDate = new Date(data['date']);
                 $("#dateBtn").val(curDate.Format("yyyy-MM-dd"));
-                document.title = title;
                 SetWechatShare(title, window.location.href, data['logo'], title);
             });
         }
@@ -143,10 +144,9 @@
             };
             // 使用定义插件
             $("#dateBtn").mobiscroll(opt_data);
-
-            var argC = getQueryString("channel");
-
-            var argD = getQueryString("date");
+            var argC = $.hash.get("channel");
+            console.log("argC=="+argC);
+            var argD = $.hash.get("date");
             if (argD != null && argD != "") {
                 curDate = new Date(argD);
             }
@@ -180,8 +180,8 @@
                 data = jQuery.parseJSON(data);
                 var listarr = [];
                 for (var key in data) {
-                    channelDescMap[key] = data[key].desc;
-                    listarr.push('<li data-channel="' + key + '">' + data[key].desc + '</li>');
+                    channelDescMap[key] = data[key].title;
+                    listarr.push('<li data-channel="' + key + '">' + data[key].title + '</li>');
                 }
                 $("#cp-channel-list ul").html(listarr.join(""));
                 $("#cp-channel-list li[data-channel='"+channel+"']").addClass("active");
@@ -224,7 +224,7 @@
             <div class="title-bar">
                 <a href="#" class="open-right gray"></a>
                     <span class="wrap">
-                        <b id="jptitle"></b>
+                        <b id="jptitle">电台小助手</b>
                     </span>
                 <!--<h2 id="jptitle">天主教小助手网络电台</h2>-->
             </div>
