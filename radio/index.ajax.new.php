@@ -145,7 +145,6 @@
             // 使用定义插件
             $("#dateBtn").mobiscroll(opt_data);
             var argC = $.hash.get("channel");
-            console.log("argC=="+argC);
             var argD = $.hash.get("date");
             if (argD != null && argD != "") {
                 curDate = new Date(argD);
@@ -200,7 +199,10 @@
                 getRadio(curDate);
                 updateHref();
             });
-
+            $("#dateBtn").change(function(){
+                curDate = new Date($("#dateBtn").val());
+                getRadio(curDate);
+            })
             //set date;
             $("#dateBtn").blur(function (event) {
                 curDate = new Date($("#dateBtn").val());
