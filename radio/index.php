@@ -161,12 +161,23 @@
 	var curDate = new Date();
 	var channel = "vacn";
 <?php
+	$channel = $_GET["channel"];
+	echo('channel="'.$channel.'";'."\n");
 	$url = "http://www.cathassist.org/radio/getradio.php?";
 	foreach ( $_GET as $key => $value )
 	{
 		$url = $url.$key.'='.$value.'&';
 	}
 	$arr = json_decode(file_get_contents($url));
+	if($channel == "cx")
+	{
+		$arr->desc = "我们因爱而相聚";
+	}
+	else if($channel == "ai")
+	{
+		$arr->desc = "来自8090的声音";
+	}
+	
 	echo('playLists = [');
 	foreach($arr->items as $item)
 	{
