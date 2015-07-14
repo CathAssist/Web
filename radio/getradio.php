@@ -62,6 +62,10 @@
 			{
 				return new AiChannel();
 			}
+			else if($c=="ls")
+			{
+				return new LSChannel();
+			}
 			else if($c=="vacn")
 			{
 				return new VacnChannel();
@@ -91,6 +95,7 @@
 		{
 			$all = json_decode(file_get_contents("list"),true);
 			$all["cx"]["desc"] = "我们因爱而相聚";
+			$all["ls"]["desc"] = "天主教每日圣经诵读";
 			$all["vacn"]["desc"] = "每天半小时来自宗座的声音";
 			$all["ai"]["desc"] = "来自8090的声音";
 			$all["gos"]["desc"] = "一起聆听主的教诲";
@@ -302,6 +307,52 @@
 
 			//ios版福音i广播在此有bug，只能先将desc字段移出
 			unset($aijson["desc"]);
+			return $aijson;
+		}
+	}
+
+	//Lauda Sion
+	class LSChannel extends BaseChannel
+	{
+		function getRadio($date)
+		{
+			global $refresh;
+
+			if($date<mktime(8, 0, 0, 7, 14, 2015))
+			{
+				$date = mktime(8, 0, 0, 7, 14, 2015);
+			}
+			$strDate = gmdate('Y-m-d',$date);
+			$aifile = './ls/'.$strDate;
+			$aijson = null;
+			if((!file_exists($aifile)) or $refresh)
+			{
+				$airadio = 'http://media.cathassist.org/radio/upload/data/lsradio/'.$strDate.'/'.$strDate.'.txt';
+				$aicontent = file_get_contents($airadio);		//或是url list
+				$aijson["title"] = "Lauda Sion";
+				$aijson["date"] = $strDate;
+				$aijson["logo"] = "http://www.cathassist.org/radio/logos/LaudaSion.jpg";
+//				$aijson["desc"] = "来自8090的声音";
+				$i = 0;
+				$items = json_decode($aicontent,true);
+				foreach($items as $item)
+				{
+					$aijson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
+					$i++;
+				}
+				if($i<1)
+				{
+					return null;
+				}
+				file_put_contents($aifile,json_encode($aijson));
+				BaseChannel::append2All("ls",$aijson);
+			}
+			else
+			{
+				$aijson = json_decode(file_get_contents($aifile),true);
+				$aijson["desc"] = "天主教每日圣经诵读";
+			}
+			
 			return $aijson;
 		}
 	}
