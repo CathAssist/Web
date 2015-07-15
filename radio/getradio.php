@@ -318,9 +318,9 @@
 		{
 			global $refresh;
 
-			if($date<mktime(8, 0, 0, 7, 14, 2015))
+			if($date<mktime(8, 0, 0, 6, 29, 2015))
 			{
-				$date = mktime(8, 0, 0, 7, 14, 2015);
+				$date = mktime(8, 0, 0, 6, 29, 2015);
 			}
 			$strDate = gmdate('Y-m-d',$date);
 			$aifile = './ls/'.$strDate;
