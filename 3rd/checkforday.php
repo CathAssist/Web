@@ -3,12 +3,16 @@
 	require_once("../include/define.php");
 	require_once("../wechat/html2text.php");
 	
+	$dtstr = gmdate("Y-m-d",time()+3600*8);
+	$dtnow = intval((time()+3600*8)/(3600*24))*3600*24;
+
+	//9点发送电台小助手咨询
+	add2weibolist('#电台小助手# 每天为大家更新梵蒂冈广播、福音i广播、Lauda Sion以及多位神父讲道，欢迎收听～请戳： http://www.cathassist.org/radio/',$dtnow+3600*9);
+
 	echo('<h1>获取每日弥撒、日课</h1>');
 	echo(file_get_contents(ROOT_WEB_URL.'getstuff/checkstuff.php'));
 	
 	{
-		$dtstr = gmdate("Y-m-d",time()+3600*8);
-		$dtnow = intval((time()+3600*8)/(3600*24))*3600*24;
 		$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".$dtstr;
 		$json = json_decode(file_get_contents($url),true);
 		if(isset($json['lod']))
