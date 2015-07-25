@@ -22,10 +22,11 @@ body{
 }
 
 .content{
-	color:rgb(137,137,137);
+	color:rgb(0,0,0);
 	text-decoration:none;
 	font-size:18px;
 	line-height: 20px;
+	margin-top: 20px;
 }
 .content img{
 	width:99%;
@@ -48,16 +49,34 @@ a.src{
 	font-family: 'Microsoft YaHei', 微软雅黑, Lucida, Verdana, 'Hiragino Sans GB', STHeiti, 'WenQuanYi Micro Hei', 'Droid Sans Fallback', SimSun, sans-serif;
 	font-size:18px;
 	line-height: 35px;
+	text-decoration: none;
+	color: rgb(48, 135, 253);
 }
 
+.pages
+{
+	display: block;
+	text-align: center;
+	margin-top: 10px;
+}
 .pages a{
 	color:#999;
 	font-size:15px;
 	line-height: 25px;	
 }
 
+.content .text{
+	margin-top:20px;
+}
+
+.track h4{
+	margin-top:15px;
+	margin-bottom:5px;
+}
+
 audio{
-	width:100%
+	width:100%;
+	margin-bottom:20px;
 }
 
 body{
