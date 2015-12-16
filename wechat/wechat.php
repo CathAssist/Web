@@ -162,7 +162,7 @@ class wechatCallbackapiTest
 		else if($key=='103')
 		{
 			//信仰生活
-			$result = mysql_query("select * from faithlife order by inputtime desc limit 10;");
+			$result = mysql_query("select * from faithlife order by id desc limit 10;");
 			while ($row = mysql_fetch_array($result) and $ArtCount<10)
 			{
 				$textTpl = '<item><Title><![CDATA[%s]]></Title><Url><![CDATA[%s]]></Url><Description><![CDATA[%s]]></Description><PicUrl><![CDATA[%s]]></PicUrl></item>';
