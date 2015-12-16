@@ -16,10 +16,10 @@
 	
 	function getList($from,$count)
 	{
-		$sql = 'select id,title,ctype,inputtime,picurl from faithlife where id<'.$from.' order by inputtime desc limit '.$count.';';
+		$sql = 'select id,title,ctype,inputtime,picurl from faithlife where id<'.$from.' order by id desc limit '.$count.';';
 		if($from<0)
 		{
-			$sql = 'select id,title,ctype,inputtime,picurl from faithlife order by inputtime desc limit '.$count.';';
+			$sql = 'select id,title,ctype,inputtime,picurl from faithlife order by id desc limit '.$count.';';
 		}
 		$result = mysql_query($sql);
 		$i = 0;
