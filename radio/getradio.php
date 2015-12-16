@@ -86,6 +86,10 @@
 			{
 				return new CztzdChannel();
 			}
+			else if($c=="jimmy-lx")
+			{
+				return new JimmyLxChannel();
+			}
 			else
 			{
 				return new BaseChannel();
@@ -99,6 +103,7 @@
 			$all["vacn"]["desc"] = "每天半小时来自宗座的声音";
 			$all["ai"]["desc"] = "来自8090的声音";
 			$all["gos"]["desc"] = "一起聆听主的教诲";
+			$all["jimmy-lx"]["desc"] = "听Jimmy神父谈灵修";
 
 			return $all;
 		}
@@ -136,7 +141,7 @@
 			$strDate = gmdate('Y-m-d',$date);
 			$ccfile = './'.$ukey.'/'.$strDate;
 			$ccjson = null;
-			if((!file_exists($ccfile)) or $refresh)
+			if($refresh)
 			{
 				$ccradio = 'http://media.cathassist.org/radio/'.$ukey.'/data/'.$strDate.'.txt';
 				$cccontent = file_get_contents($ccradio);		//或是url list
@@ -157,6 +162,10 @@
 				}
 				file_put_contents($ccfile,json_encode($ccjson));
 				BaseChannel::append2All($ukey,$ccjson);
+			}
+			else if(!file_exists($ccfile))
+			{
+				return null;
 			}
 			else
 			{
@@ -214,6 +223,23 @@
 		public function getBeginDate()
 		{
 			return mktime(8, 0, 0, 3, 27, 2014);
+		}
+	}
+	class JimmyLxChannel extends CCChannel
+	{
+		public function getInfo()
+		{
+			$ret = array();
+			$ret['key'] = 'jimmy-lx';
+			$ret['title'] = 'Jimmy神父谈信仰生活';
+			$ret['logo'] = 'http://www.cathassist.org/radio/logos/jimmy-lx.jpg';
+			$ret['desc'] = '听Jimmy神父谈灵修';
+			return $ret;
+		}
+		
+		public function getBeginDate()
+		{
+			return mktime(8, 0, 0, 4, 20, 2015);
 		}
 	}
 	
