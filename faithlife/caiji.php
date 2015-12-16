@@ -70,6 +70,12 @@ function get_content($url){
 	$strarr=explode('|',$str);
 	
 	$data['inputtime'] = trim($strarr[0]);
+	if(strlen($data['inputtime'])>30)
+	{
+		$realtime = explode('style="float:right">打印</a>',$strarr[0]);
+		$data['inputtime'] = trim($realtime[1]);
+	}
+	
 	//$authorarr = explode("：",$strarr[1]);
 	//$data['author'] = trim($authorarr[1]);
 	//$comeformarr =explode("：",$strarr[2]);

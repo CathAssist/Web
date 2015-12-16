@@ -20,7 +20,7 @@ $limit = "$offset,$pagesize";
 $allnum = $db->get_one( "COUNT(*) AS num",'faithlife',$where);//总条数
 $pages = ceil($allnum['num'] / $pagesize);//总页数
 
-$lists = $db->select('*','faithlife',$where,$limit,' inputtime desc ');
+$lists = $db->select('*','faithlife',$where,$limit,' id desc ');
 ?>
 <html>
 <head>

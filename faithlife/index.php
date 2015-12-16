@@ -28,7 +28,7 @@ $ctypearr=array(
 <div class="content">
 	<div ><h1><a href='list.php?ctype=<?=$k?>'><?=$v?></a></h1></div>
 	<?php 
-	$lists = $db->select('*','faithlife'," ctype='$k' ",'0,5',' inputtime desc ');
+	$lists = $db->select('*','faithlife'," ctype='$k' ",'0,5',' id desc ');
 	if(is_array($lists))foreach($lists as $v){
 	?>
 	<div class="link"><a href="<?=SITE_URL.$v['nurl']?>"><?=$v['title']?></a></div>
