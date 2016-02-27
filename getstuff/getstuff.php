@@ -65,6 +65,7 @@
 		curl_setopt($mcurl, CURLOPT_POST, 1);//设置为POST方式
 		curl_setopt($mcurl, CURLOPT_POSTFIELDS, '{"sdb":true,"to":"'.$date->format('Y-m-d').'","from":"'.$date->format('Y-m-d').'"}');//POST数据
 		$response = curl_exec($mcurl);//接收返回信息
+		$response = preg_replace('/<\!-.*->/i','',$response);
 		
 		$json = json_decode($response,true);
 		if($json==null)
@@ -234,7 +235,7 @@
 			
 			$imgurl = ROOT_WEB_URL."wechat/pics/".$mode."1.jpg";
 			$link = ROOT_WEB_URL.'getstuff/stuff/'.$_GET["date"].'_'.$mode.'.html';
-			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script><script type="text/javascript" language="javascript" src="/include/common.js"></script><script type="text/javascript">document.addEventListener("DOMContentLoaded", function(){SetWechatShare("'.$title.'",window.location.href,"'.$imgurl.'","'.$title.'");});</script></html>';
+			echo '</body><script type="text/javascript" language="javascript" src="/include/googleanalysis.js"></script><script type="text/javascript" language="javascript" src="http://cathassist.org/include/common.js"></script><script type="text/javascript">document.addEventListener("DOMContentLoaded", function(){SetWechatShare("'.$title.'","'.$link.'","'.$imgurl.'","'.$title.'");});</script></html>';
 		}
 		else
 		{
