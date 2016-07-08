@@ -63,6 +63,7 @@
 		curl_setopt($mcurl, CURLOPT_RETURNTRANSFER, 1);//设置是否返回信息
 	//	curl_setopt($mcurl, CURLOPT_HTTPHEADER, $header);//设置HTTP头
 		curl_setopt($mcurl, CURLOPT_POST, 1);//设置为POST方式
+		curl_setopt($mcurl, CURLOPT_USERAGENT, "Dalvik/2.1.0 (Linux; U; Android 5.1.1; YQ601 Build/LMY47V)");
 		curl_setopt($mcurl, CURLOPT_POSTFIELDS, '{"sdb":true,"to":"'.$date->format('Y-m-d').'","from":"'.$date->format('Y-m-d').'"}');//POST数据
 		$response = curl_exec($mcurl);//接收返回信息
 		$response = preg_replace('/<\!-.*->/i','',$response);
@@ -116,6 +117,7 @@
 			$json_saint = $json_date['saint'];
 			if($json_saint)
 				$stuff_saint = zhconversion_hans($json_saint['content']);
+			
 			insertStuff();
 		}
 	}

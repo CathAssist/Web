@@ -16,6 +16,10 @@
 	do
 	{
 		$datestr = gmdate("Y-m-d",time()+3600*8+$index*3600*24);
+
+		//update stuff force
+		file_get_contents("http://www.xiaozhushou.org/api.php?op=get_daily&date=".$datestr."&r=1");
+		echo("http://www.xiaozhushou.org/api.php?op=get_daily&date=".$datestr."&r=1"."<br/>");
 		
 		$stuffstr = 'stuff/'.$datestr.'.html';
 		$fs=null;
@@ -46,7 +50,7 @@
 				}
 				else
 				{
-					$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".$datestr."&mode=".$value."&force=true";
+					$url = ROOT_WEB_URL."getstuff/getstuff.php?date=".$datestr."&mode=".$value;
 					$contents = file_get_contents($url); 
 					fwrite($fp,$contents);
 					fclose($fp);
