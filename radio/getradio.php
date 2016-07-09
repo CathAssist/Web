@@ -294,46 +294,33 @@
 	{
 		function getRadio($date)
 		{
-			global $refresh;
-
-			if($date<mktime(8, 0, 0, 6, 1, 2014))
+			if($date<mktime(8, 0, 0, 6, 11, 2014))
 			{
-				$date = mktime(8, 0, 0, 6, 1, 2014);
+				$date = mktime(8, 0, 0, 6, 11, 2014);
 			}
+
 			$strDate = gmdate('Y-m-d',$date);
-			$aifile = './ai/'.$strDate;
-			$aijson = null;
-			if((!file_exists($aifile)) or $refresh)
-			{
-				$airadio = 'http://media.cathassist.org/radio/upload/data/airadio/'.$strDate.'/'.$strDate.'.txt';
-				$aicontent = file_get_contents($airadio);		//或是url list
-				$aijson["title"] = "福音i广播";
-				$aijson["date"] = $strDate;
-				$aijson["logo"] = "http://www.cathassist.org/radio/logos/ai.png";
-//				$aijson["desc"] = "来自8090的声音";
-				$i = 0;
-				$items = json_decode($aicontent,true);
-				foreach($items as $item)
-				{
-					$aijson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
-					$i++;
+			$jUrl = "http://www.xiaozhushou.org/api.php?op=get_music&m=radio_list&album_id=60&pubdate=".$strDate;
+			$aiContent = file_get_contents($jUrl);
+			$jData = json_decode($aiContent,true);
+
+			$jRet = array('title' => '福音i广播', 'date'=> $jData['date'], 'logo' => 'http://www.cathassist.org/radio/logos/ai.png');
+			$jRet['items'] = array();
+
+			if(count($jData["items"]) > 0) {
+				foreach ($jData["items"] as $item) {
+					$itemNew['title'] = "i的签到簿";
+					$itemNew['src'] = $item['src'];
+
+					array_push($jRet['items'],$itemNew);
 				}
-				if($i<1)
-				{
-					return null;
-				}
-				file_put_contents($aifile,json_encode($aijson));
-				BaseChannel::append2All("ai",$aijson);
 			}
 			else
 			{
-				$aijson = json_decode(file_get_contents($aifile),true);
-				$aijson["desc"] = "来自8090的声音";
+				return null;
 			}
 
-			//ios版福音i广播在此有bug，只能先将desc字段移出
-			unset($aijson["desc"]);
-			return $aijson;
+			return $jRet;
 		}
 	}
 
