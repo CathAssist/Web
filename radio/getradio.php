@@ -104,8 +104,62 @@
 			$all["ai"]["desc"] = "来自8090的声音";
 			$all["gos"]["desc"] = "一起聆听主的教诲";
 			$all["jimmy-lx"]["desc"] = "听Jimmy神父谈灵修";
+			$all["smzy"]["desc"] = "听贾神父讲道";
 
 			return $all;
+		}
+	}
+
+	class CXZShouChannel extends BaseChannel
+	{
+		public function getInfo() {
+			$jRet =  array();
+			$jRet['key'] = 'ai';
+			$jRet['albumId'] = 60;
+			$jRet['title'] = '福音i广播';
+			$jRet['logo'] = 'http://www.cathassist.org/radio/logos/ai.png';
+			$jRet['desc'] = '来自8090的声音';
+			$jRet['item'] = 'i的签到簿';
+			return $jRet;
+		}
+
+		public function getRadio($date) {
+			$cInfo = $this->getInfo();
+			
+			$ukey = $cInfo['key'];
+
+
+			$strDate = gmdate('Y-m-d',$date);
+			$jUrl = "http://www.xiaozhushou.org/api.php?op=get_music&m=radio_list&album_id=".$cInfo['albumId']."&pubdate=".$strDate;
+			$aiContent = file_get_contents($jUrl);
+			$jData = json_decode($aiContent,true);
+
+			$jRet = null;
+			$jRet["title"] = $cInfo['title'];
+			$jRet["date"] = $jData['date'];
+			$jRet["logo"] = $cInfo['logo'];
+			$jRet["desc"] = $cInfo['desc'];
+			$jRet['items'] = array();
+
+			if(count($jData["items"]) > 0) {
+				foreach ($jData["items"] as $item) {
+					if(isset($cInfo['item'])) {
+						$itemNew['title'] = $cInfo['item'];
+					}
+					else {
+						$itemNew['title'] = $item['title'];
+					}
+					$itemNew['src'] = $item['src'];
+
+					array_push($jRet['items'],$itemNew);
+				}
+			}
+			else
+			{
+				return null;
+			}
+
+			return $jRet;
 		}
 	}
 	
@@ -174,21 +228,16 @@
 			return $ccjson;
 		}
 	}
-	class SmzyChannel extends CCChannel
+	class SmzyChannel extends CXZShouChannel
 	{
-		public function getInfo()
-		{
-			$ret = array();
-			$ret['key'] = 'smzy';
-			$ret['title'] = '生命之言';
-			$ret['logo'] = 'http://www.cathassist.org/radio/logos/smzy.png';
-			$ret['desc'] = '听神父讲道';
-			return $ret;
-		}
-		
-		public function getBeginDate()
-		{
-			return mktime(8, 0, 0, 7, 24, 2014);
+		public function getInfo() {
+			$jRet =  array();
+			$jRet['key'] = 'smzy';
+			$jRet['albumId'] = 61;
+			$jRet['title'] = '生命之言';
+			$jRet['logo'] = 'http://www.cathassist.org/radio/logos/smzy.png';
+			$jRet['desc'] = '听贾神父讲道';
+			return $jRet;
 		}
 	}
 	class HyqdChannel extends CCChannel
@@ -225,21 +274,16 @@
 			return mktime(8, 0, 0, 3, 27, 2014);
 		}
 	}
-	class JimmyLxChannel extends CCChannel
+	class JimmyLxChannel extends CXZShouChannel
 	{
-		public function getInfo()
-		{
-			$ret = array();
-			$ret['key'] = 'jimmy-lx';
-			$ret['title'] = 'Jimmy神父谈信仰生活';
-			$ret['logo'] = 'http://www.cathassist.org/radio/logos/jimmy-lx.jpg';
-			$ret['desc'] = '听Jimmy神父谈灵修';
-			return $ret;
-		}
-		
-		public function getBeginDate()
-		{
-			return mktime(8, 0, 0, 4, 20, 2015);
+		public function getInfo() {
+			$jRet =  array();
+			$jRet['key'] = 'jimmy-lx';
+			$jRet['albumId'] = 63;
+			$jRet['title'] = 'Jimmy神父谈信仰生活';
+			$jRet['logo'] = 'http://www.cathassist.org/radio/logos/jimmy-lx.jpg';
+			$jRet['desc'] = '听Jimmy神父谈灵修';
+			return $jRet;
 		}
 	}
 	
@@ -290,36 +334,16 @@
 	}
 	
 	//福音爱广播
-	class AiChannel extends BaseChannel
+	class AiChannel extends CXZShouChannel
 	{
-		function getRadio($date)
-		{
-			if($date<mktime(8, 0, 0, 6, 11, 2014))
-			{
-				$date = mktime(8, 0, 0, 6, 11, 2014);
-			}
-
-			$strDate = gmdate('Y-m-d',$date);
-			$jUrl = "http://www.xiaozhushou.org/api.php?op=get_music&m=radio_list&album_id=60&pubdate=".$strDate;
-			$aiContent = file_get_contents($jUrl);
-			$jData = json_decode($aiContent,true);
-
-			$jRet = array('title' => '福音i广播', 'date'=> $jData['date'], 'logo' => 'http://www.cathassist.org/radio/logos/ai.png');
-			$jRet['items'] = array();
-
-			if(count($jData["items"]) > 0) {
-				foreach ($jData["items"] as $item) {
-					$itemNew['title'] = "i的签到簿";
-					$itemNew['src'] = $item['src'];
-
-					array_push($jRet['items'],$itemNew);
-				}
-			}
-			else
-			{
-				return null;
-			}
-
+		public function getInfo() {
+			$jRet =  array();
+			$jRet['key'] = 'ai';
+			$jRet['albumId'] = 60;
+			$jRet['title'] = '福音i广播';
+			$jRet['logo'] = 'http://www.cathassist.org/radio/logos/ai.png';
+			$jRet['desc'] = '来自8090的声音';
+			$jRet['item'] = 'i的签到簿';
 			return $jRet;
 		}
 	}
@@ -372,39 +396,17 @@
 
 
 	//梵蒂冈中文广播
-	class VacnChannel extends BaseChannel
+	class VacnChannel extends CXZShouChannel
 	{
-		function getRadio($date)
-		{
-			global $refresh;
-			
-			$strDate = gmdate('Y-m-d',$date);
-			$vafile = './vacn/'.$strDate;
-			$vajson = null;
-			if(!file_exists($vafile) or $refresh)
-			{
-				$vajson["title"] = "梵蒂冈中文广播";
-				$vajson["date"] = $strDate;
-				$vajson["logo"] = "http://www.cathassist.org/radio/logos/vacn.jpg";
-				$vajson["desc"] = "每天半小时来自宗座的声音";
-				$itemsrc = "http://media.cathassist.org/vaticanradio/cn/mp3/".$strDate.".mp3";
-				if(url_exists($itemsrc))
-				{
-					$title = "梵蒂冈中文广播";
-					$vajson['items'][0] = array('title'=>$title,'src'=>$itemsrc);
-					file_put_contents($vafile,json_encode($vajson));
-					BaseChannel::append2All("vacn",$vajson);
-				}
-				else
-				{
-					return null;
-				}
-			}
-			else
-			{
-				$vajson = json_decode(file_get_contents($vafile),true);
-			}
-			return $vajson;
+		public function getInfo() {
+			$jRet =  array();
+			$jRet['key'] = 'vacn';
+			$jRet['albumId'] = 50;
+			$jRet['title'] = '梵蒂冈中文广播';
+			$jRet['logo'] = 'http://www.cathassist.org/radio/logos/vacn.jpg';
+			$jRet['desc'] = '每天半小时来自宗座的声音';
+			$jRet['item'] = '梵蒂冈中文广播';
+			return $jRet;
 		}
 	}
 	
