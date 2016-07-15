@@ -153,6 +153,8 @@
 
 					array_push($jRet['items'],$itemNew);
 				}
+				
+				BaseChannel::append2All($ukey,$jRet);
 			}
 			else
 			{
