@@ -64,10 +64,12 @@
 	//	curl_setopt($mcurl, CURLOPT_HTTPHEADER, $header);//设置HTTP头
 		curl_setopt($mcurl, CURLOPT_POST, 1);//设置为POST方式
 		curl_setopt($mcurl, CURLOPT_USERAGENT, "Dalvik/2.1.0 (Linux; U; Android 5.1.1; YQ601 Build/LMY47V)");
-		curl_setopt($mcurl, CURLOPT_POSTFIELDS, '{"sdb":false,"to":"'.$date->format('Y-m-d').'","from":"'.$date->format('Y-m-d').'"}');//POST数据
+		curl_setopt($mcurl, CURLOPT_POSTFIELDS, '{"from":"'.$date->format('Y-m-d').'","to":"'.$date->format('Y-m-d').'","sdb":false}');//POST数据
 		$response = curl_exec($mcurl);//接收返回信息
-		$response = preg_replace('/<\!-.*->/i','',$response);
+		//$response = preg_replace('/<\!-.*->/i','',$response);
+		$response = preg_replace('/<\!(.*?)-->/i','',$response);
 		
+//		die($response);
 		$json = json_decode($response,true);
 		if($json==null)
 		{
