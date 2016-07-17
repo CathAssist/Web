@@ -351,48 +351,17 @@
 	}
 
 	//Lauda Sion
-	class LSChannel extends BaseChannel
+	class LSChannel extends CXZShouChannel
 	{
-		function getRadio($date)
-		{
-			global $refresh;
-
-			if($date<mktime(8, 0, 0, 6, 29, 2015))
-			{
-				$date = mktime(8, 0, 0, 6, 29, 2015);
-			}
-			$strDate = gmdate('Y-m-d',$date);
-			$aifile = './ls/'.$strDate;
-			$aijson = null;
-			if((!file_exists($aifile)) or $refresh)
-			{
-				$airadio = 'http://media.cathassist.org/radio/upload/data/lsradio/'.$strDate.'/'.$strDate.'.txt';
-				$aicontent = file_get_contents($airadio);		//或是url list
-				$aijson["title"] = "Lauda Sion";
-				$aijson["date"] = $strDate;
-				$aijson["logo"] = "http://www.cathassist.org/radio/logos/LaudaSion.jpg";
-//				$aijson["desc"] = "来自8090的声音";
-				$i = 0;
-				$items = json_decode($aicontent,true);
-				foreach($items as $item)
-				{
-					$aijson['items'][$i] = array('title'=>$item['title'],'src'=>$item['url']);
-					$i++;
-				}
-				if($i<1)
-				{
-					return null;
-				}
-				file_put_contents($aifile,json_encode($aijson));
-				BaseChannel::append2All("ls",$aijson);
-			}
-			else
-			{
-				$aijson = json_decode(file_get_contents($aifile),true);
-				$aijson["desc"] = "天主教每日圣经诵读";
-			}
-			
-			return $aijson;
+		public function getInfo() {
+			$jRet =  array();
+			$jRet['key'] = 'ls';
+			$jRet['albumId'] = 66;
+			$jRet['title'] = 'Lauda Sion';
+			$jRet['logo'] = 'http://www.cathassist.org/radio/logos/LaudaSion.jpg';
+			$jRet['desc'] = '天主教每日圣经诵读';
+			$jRet['item'] = '读经与诵读节选';
+			return $jRet;
 		}
 	}
 
