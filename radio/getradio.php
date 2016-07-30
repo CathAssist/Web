@@ -138,7 +138,7 @@
 			$jRet["title"] = $cInfo['title'];
 			$jRet["date"] = $jData['date'];
 			$jRet["logo"] = $cInfo['logo'];
-			$jRet["desc"] = $cInfo['desc'];
+			//$jRet["desc"] = $cInfo['desc'];
 			$jRet['items'] = array();
 
 			if(count($jData["items"]) > 0) {
@@ -418,7 +418,7 @@
 		}
 	}
 	
-	
+	date_default_timezone_set("UTC");	
 	$channel = "";
 	if(array_key_exists("channel",$_GET))
 	{
