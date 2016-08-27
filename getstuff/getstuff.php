@@ -187,7 +187,7 @@
 		$ret["ordo"] =  ($stuff_ordo);
 		$ret["ves"] =  ($stuff_ves);
 		$ret["saint"] =  ($stuff_saint);
-		if($isjson>0)
+		if($isjson>0 || ($isjson==0&&$mode!=""))
 		{
 			$ret = json_encode($ret);
 			if($isjson==2)
@@ -287,6 +287,12 @@
 		error();
 	}
 
+	if($isjson==1 && $mode != "")
+	{
+		header("Location: http://www.xiaozhushou.org/index.php?m=daily&date=".$_GET["date"]."&stype=".$mode);
+		exit();
+	}
+
 	//返回的数据
 	$stuff_mass = "";		//弥撒
 	$stuff_med = "";		//日祷
@@ -307,7 +313,7 @@
 		{
 			$isupdate = true;
 			$row = mysql_fetch_array($result);
-			if(array_key_exists("force",$_GET) && $row['lastupdate']!=date('Y-m-d'))
+			if(array_key_exists("force",$_GET) /*&& $row['lastupdate']!=date('Y-m-d')*/)
 			{
 				//强制刷新
 				getstuff();
